@@ -2,7 +2,7 @@ package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
 
-public class Track implements Ideable {
+public class Track implements Idable {
     private String country;
     private Time bestTime;
     private String name;

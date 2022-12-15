@@ -2,7 +2,7 @@ package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
 
-public class Driver implements Ideable {
+public class Driver implements Idable {
     private String name;
     private Team team;
     private Track favouriteTrack;
