@@ -1,8 +1,8 @@
-package ba.unsa.etf.rpr;
+package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
 
-public class Driver implements Ideable{
+public class Driver implements Ideable {
     private String name;
     private Team team;
     private Track favouriteTrack;

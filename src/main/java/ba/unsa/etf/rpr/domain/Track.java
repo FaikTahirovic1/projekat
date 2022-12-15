@@ -1,8 +1,8 @@
-package ba.unsa.etf.rpr;
+package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
 
-public class Track implements Ideable{
+public class Track implements Ideable {
     private String country;
     private Time bestTime;
     private String name;
