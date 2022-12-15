@@ -57,7 +57,7 @@ public class Track implements Ideable{
 
     @Override
     public int hashCode() {
-        return Objects.hash(country, bestTime, name, id);
+        return Objects.hash(name, id);
     }
 
     @Override
