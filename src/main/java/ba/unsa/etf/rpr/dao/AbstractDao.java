@@ -29,5 +29,24 @@ public AbstractDao(String tableName) {
     }
     public abstract  T row2object (ResultSet rs) throws RuntimeException;
     public abstract Map<String,Object> object2row(T object);
+    public T getById(int id)throws RuntimeException{
+       String query = "SELECT * FROM " + this.tableName+" WHERE id = ?";
+       try{
+           PreparedStatement stmt = this.connection.prepareStatement(query);
+           stmt.setInt(1,id);
+           ResultSet rs = stmt.executeQuery();
+           if(rs.next()){
+               T result = row2object(rs);
+               rs.close();
+               return result;
+
+           } else{
+               throw new RuntimeException("Onbjekat nije nadjen")
+           }
+
+       }catch (SQLException e){
+           throw new RuntimeException(e.getMessage(),e);
+       }
+    }
 
 }
