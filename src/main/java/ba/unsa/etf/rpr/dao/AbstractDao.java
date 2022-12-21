@@ -157,7 +157,7 @@ public AbstractDao(String tableName) {
             stmt.executeUpdate();
             return item;
         }catch (SQLException e){
-            throw new Runtime(e.getMessage(), e);
+            throw new RuntimeException(e.getMessage(), e);
         }
     }
 
