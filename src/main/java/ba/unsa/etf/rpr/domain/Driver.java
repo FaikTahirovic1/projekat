@@ -7,16 +7,22 @@ public class Driver implements Idable {
     private Team team;
     private Track favouriteTrack;
     private int id;
+    private int age;
 
-    public Driver(String name, Team team, Track favouriteTrack, int id) {
+    public Driver(String name, Team team, Track favouriteTrack, int id, int age) {
         this.name = name;
         this.team = team;
         this.favouriteTrack = favouriteTrack;
         this.id = id;
+        this.age = age;
     }
 
     public String getName() {
         return name;
+    }
+
+    public int getAge() {
+        return age;
     }
 
     public Team getTeam() {
@@ -43,6 +49,10 @@ public class Driver implements Idable {
         this.favouriteTrack = favouriteTrack;
     }
 
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -52,12 +62,12 @@ public class Driver implements Idable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Driver driver = (Driver) o;
-        return id == driver.id && Objects.equals(name, driver.name) && Objects.equals(team, driver.team) && Objects.equals(favouriteTrack, driver.favouriteTrack);
+        return id == driver.id && age == driver.age && Objects.equals(name, driver.name) && Objects.equals(team, driver.team) && Objects.equals(favouriteTrack, driver.favouriteTrack);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, team, favouriteTrack, id);
+        return Objects.hash(name, team, favouriteTrack, id, age);
     }
 
     @Override
@@ -67,6 +77,7 @@ public class Driver implements Idable {
                 ", team=" + team +
                 ", favouriteTrack=" + favouriteTrack +
                 ", id=" + id +
+                ", age=" + age +
                 '}';
     }
 }
