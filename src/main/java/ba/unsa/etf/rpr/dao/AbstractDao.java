@@ -28,5 +28,6 @@ public AbstractDao(String tableName) {
         return connection;
     }
     public abstract  T row2object (ResultSet rs) throws RuntimeException;
+    public abstract Map<String,Object> object2row(T object);
 
 }
