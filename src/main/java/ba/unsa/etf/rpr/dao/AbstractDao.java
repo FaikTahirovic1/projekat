@@ -19,7 +19,7 @@ public AbstractDao(String tableName) {
         String password = p.getProperty("db.password");
         this.connection = DriverManager.getConnection(url,username,password);
     }catch(Exception e){
-        System.out.println("Greska pri stupanju konekcije na bazu");
+        System.out.println("Gresk pri stupanju konekcije na bazu");
         e.printStackTrace();
     }
 }
