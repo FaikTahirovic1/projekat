@@ -41,12 +41,29 @@ public AbstractDao(String tableName) {
                return result;
 
            } else{
-               throw new RuntimeException("Onbjekat nije nadjen")
+               throw new RuntimeException("Onbjekat nije nadjen");
            }
 
        }catch (SQLException e){
            throw new RuntimeException(e.getMessage(),e);
        }
+
+    }
+    public List<T> getAll() throws RuntimeException {
+        String query = "SELECT * FROM "+ tableName;
+        List<T> results = new ArrayList<T>();
+        try{
+            PreparedStatement stmt = getConnection().prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){ // result set is iterator.
+                T object = row2object(rs);
+                results.add(object);
+            }
+            rs.close();
+            return results;
+        }catch (SQLException e){
+            throw new RuntimeException(e.getMessage(), e);
+        }
     }
 
 }
