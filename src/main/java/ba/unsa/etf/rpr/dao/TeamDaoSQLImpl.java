@@ -57,7 +57,7 @@ public class TeamDaoSQLImpl extends AbstractDao<Team> implements  TeamDao{
     }
     @Override
     public Team searchByDriver(ba.unsa.etf.rpr.domain.Driver d) throws F1Exception{
-         String query = "Select * FROM Team WHERE id_driver1 =";
+         String query = "Select * FROM Team WHERE id_driver1 = ?";
          try{
              PreparedStatement stmt = getConnection().prepareStatement(query);
              stmt.setInt(1,d.getId());
