@@ -45,7 +45,7 @@ public class DriverDaoSQLImpl extends AbstractDao<Driver> implements DriverDao{
     }
     public List<Driver> searchByText(String text) throws F1Exception {
         //mora sa concat jer inace nece raditi jer radi sa key chars
-        String query = "SELECT * FROM quotes WHERE Drivers LIKE concat('%', ?, '%')";
+        String query = "SELECT * FROM Drivers WHERE Name LIKE concat('%', ?, '%')";
         try {
             PreparedStatement stmt = getConnection().prepareStatement(query);
             stmt.setString(1, text);

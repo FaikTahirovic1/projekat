@@ -52,6 +52,10 @@ public AbstractDao(String tableName) {
        }
 
     }
+    public T getByDriver(ba.unsa.etf.rpr.domain.Driver d)throws F1Exception{
+        return getById(d.getId());
+
+    }
     public List<T> getAll() throws RuntimeException {
         String query = "SELECT * FROM "+ tableName;
         List<T> results = new ArrayList<T>();

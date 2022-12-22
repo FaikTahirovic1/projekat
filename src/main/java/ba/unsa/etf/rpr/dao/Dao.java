@@ -40,5 +40,6 @@ import java.util.List;
          * @return List of entities from database
          */
         List<T> getAll() throws RuntimeException;
+        //T getByDriver(int id) throws F1Exception;
     }
 

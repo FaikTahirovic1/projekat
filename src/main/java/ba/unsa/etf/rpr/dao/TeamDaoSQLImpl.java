@@ -41,7 +41,7 @@ public class TeamDaoSQLImpl extends AbstractDao<Team> implements  TeamDao{
     @Override
     public List<Team> searchByText(String text) throws F1Exception {
         //mora sa concat jer inace nece raditi jer radi sa key chars
-        String query = "SELECT * FROM quotes WHERE Team LIKE concat('%', ?, '%')";
+        String query = "SELECT * FROM Team WHERE Name LIKE concat('%', ?, '%')";
         try {
             PreparedStatement stmt = getConnection().prepareStatement(query);
             stmt.setString(1, text);
@@ -54,6 +54,18 @@ public class TeamDaoSQLImpl extends AbstractDao<Team> implements  TeamDao{
         } catch (SQLException e) {
             throw new F1Exception(e.getMessage(), e);
         }
+    }
+    @Override
+    public Team searchByDriver(ba.unsa.etf.rpr.domain.Driver d) throws F1Exception{
+         String query = "Select * FROM Team WHERE id_driver1 =";
+         try{
+             PreparedStatement stmt = getConnection().prepareStatement(query);
+             stmt.setInt(1,d.getId());
+             ResultSet rs = stmt.executeQuery();
+             return row2object(rs);
+         }catch (SQLException e){
+             throw new F1Exception(e.getMessage(),e);
+         }
     }
 
 }
