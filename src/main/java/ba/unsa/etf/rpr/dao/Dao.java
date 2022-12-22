@@ -1,6 +1,8 @@
 package ba.unsa.etf.rpr.dao;
 
 
+import ba.unsa.etf.rpr.Exception.F1Exception;
+
 import java.util.List;
 
 
@@ -11,7 +13,7 @@ import java.util.List;
          * @param id primary key of entity
          * @return Entity from database
          */
-        T getById(int id) throws RuntimeException;
+        T getById(int id) throws F1Exception;
 
         /**
          * Saves entity into database

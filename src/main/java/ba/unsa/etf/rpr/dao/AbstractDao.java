@@ -1,4 +1,5 @@
 package ba.unsa.etf.rpr.dao;
+import ba.unsa.etf.rpr.Exception.F1Exception;
 import ba.unsa.etf.rpr.domain.Idable;
 
 import java.io.IOException;
@@ -27,7 +28,7 @@ public AbstractDao(String tableName) {
     public Connection getConnection() {
         return connection;
     }
-    public abstract  T row2object (ResultSet rs) throws RuntimeException;
+    public abstract  T row2object (ResultSet rs) throws F1Exception;
     public abstract Map<String,Object> object2row(T object);
     public T getById(int id)throws RuntimeException{
        String query = "SELECT * FROM " + this.tableName+" WHERE id = ?";
@@ -46,6 +47,8 @@ public AbstractDao(String tableName) {
 
        }catch (SQLException e){
            throw new RuntimeException(e.getMessage(),e);
+       }catch(F1Exception e){
+           throw new RuntimeException(e.getMessage(),e);
        }
 
     }
@@ -62,6 +65,8 @@ public AbstractDao(String tableName) {
             rs.close();
             return results;
         }catch (SQLException e){
+            throw new RuntimeException(e.getMessage(), e);
+        }catch (F1Exception e){
             throw new RuntimeException(e.getMessage(), e);
         }
     }

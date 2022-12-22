@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.dao;
 
 
+import ba.unsa.etf.rpr.Exception.F1Exception;
 import ba.unsa.etf.rpr.domain.Driver;
 
 import java.sql.ResultSet;
@@ -13,7 +14,7 @@ public class DriverDaoSQLImpl extends AbstractDao<Driver> implements DriverDao{
 
     }
     @Override
-    public Driver row2object(ResultSet rs)throws RuntimeException{
+    public Driver row2object(ResultSet rs)throws F1Exception {
         try{
             Driver d = new Driver();
             d.setId(rs.getInt("idDrivers"));
@@ -23,7 +24,7 @@ public class DriverDaoSQLImpl extends AbstractDao<Driver> implements DriverDao{
             d.setTeam(DaoFactory.teamDao().getById(rs.getInt("teamid")));
             return d;
         }catch(Exception e){
-            throw new RuntimeException(e.getMessage(),e);
+            throw new F1Exception(e.getMessage(),e);
         }
     }
 
