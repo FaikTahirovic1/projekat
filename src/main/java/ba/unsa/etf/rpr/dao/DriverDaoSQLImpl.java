@@ -3,8 +3,13 @@ package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.Exception.F1Exception;
 import ba.unsa.etf.rpr.domain.Driver;
+import ba.unsa.etf.rpr.domain.Team;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -37,5 +42,21 @@ public class DriverDaoSQLImpl extends AbstractDao<Driver> implements DriverDao{
         objekat.put("teamid",d.getTeam().getId());
         return objekat;
 
+    }
+    public List<Driver> searchByText(String text) throws F1Exception {
+        //mora sa concat jer inace nece raditi jer radi sa key chars
+        String query = "SELECT * FROM quotes WHERE Drivers LIKE concat('%', ?, '%')";
+        try {
+            PreparedStatement stmt = getConnection().prepareStatement(query);
+            stmt.setString(1, text);
+            ResultSet rs = stmt.executeQuery();
+            ArrayList<Driver> driverLista = new ArrayList<>();
+            while (rs.next()) {
+                driverLista.add(row2object(rs));
+            }
+            return driverLista;
+        } catch (SQLException e) {
+            throw new F1Exception(e.getMessage(), e);
+        }
     }
 }
