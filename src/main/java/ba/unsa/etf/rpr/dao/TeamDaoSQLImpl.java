@@ -1,8 +1,11 @@
 package ba.unsa.etf.rpr.dao;
 
+import ba.unsa.etf.rpr.Exception.F1Exception;
 import ba.unsa.etf.rpr.domain.Team;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -22,7 +25,7 @@ public class TeamDaoSQLImpl extends AbstractDao<Team> implements  TeamDao{
             return team;
 
         }catch(Exception e){
-            throw new RuntimeException("Ne postoji kolona idTeam");
+            throw new RuntimeException("Ne postoji kolona");
         }
     }
     @Override
@@ -34,6 +37,23 @@ public class TeamDaoSQLImpl extends AbstractDao<Team> implements  TeamDao{
         row.put("id_driver1",team.getDriver1().getId());
         row.put("id_driver2",team.getDriver2().getId());
         return row;
+    }
+    @Override
+    public List<Team> searchByText(String text) throws F1Exception {
+        //mora sa concat jer inace nece raditi jer radi sa key chars
+        String query = "SELECT * FROM quotes WHERE Team LIKE concat('%', ?, '%')";
+        try {
+            PreparedStatement stmt = getConnection().prepareStatement(query);
+            stmt.setString(1, text);
+            ResultSet rs = stmt.executeQuery();
+            ArrayList<Team> teamLista = new ArrayList<>();
+            while (rs.next()) {
+                teamLista.add(row2object(rs));
+            }
+            return teamLista;
+        } catch (SQLException e) {
+            throw new F1Exception(e.getMessage(), e);
+        }
     }
 
 }
