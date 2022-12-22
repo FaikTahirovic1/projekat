@@ -13,6 +13,13 @@ public class Time {
         this.seconds = seconds;
         this.thousands = thousands;
     }
+    public Time(int a){
+        this.thousands = a%1000;
+        a = a/1000;
+        this.seconds = a%60;
+        a = a/60;
+        this.minutes = a;
+    }
 
     public int getMinutes() {
         return minutes;
@@ -36,6 +43,9 @@ public class Time {
 
     public void setThousands(int thousends) {
         this.thousands = thousands;
+    }
+    public int timeToInt(){
+        return this.thousands + 1000 * this.seconds + 60 * 1000 * this.minutes;
     }
 
     @Override
