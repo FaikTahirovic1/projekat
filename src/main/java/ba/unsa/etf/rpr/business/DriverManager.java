@@ -12,7 +12,7 @@ public class DriverManager {
         return DaoFactory.driverDao().getAll();
     }
 
-    public List<Driver> searchQuotes(String text) throws F1Exception {
+    public List<Driver> searchDrivers(String text) throws F1Exception {
         return DaoFactory.driverDao().searchByText(text);
     }
 
