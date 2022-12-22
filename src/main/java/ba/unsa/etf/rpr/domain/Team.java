@@ -17,6 +17,13 @@ public class Team implements Idable {
         this.driver1 = driver1;
         this.driver2 = driver2;
     }
+    public Team(){
+        this.id = 100;
+        this.name ="";
+        this.country="";
+        this.driver1 = new Driver();
+        this.driver2 = new Driver();
+    }
 
     public int getId() {
         return id;

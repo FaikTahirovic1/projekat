@@ -14,6 +14,12 @@ public class Track implements Idable {
         this.name = name;
         this.id = id;
     }
+    public Track(){
+        this.id = 1;
+        this.bestTime = new Time(0,0,0);
+        this.name ="";
+        this.country="";
+    }
 
     public String getCountry() {
         return country;

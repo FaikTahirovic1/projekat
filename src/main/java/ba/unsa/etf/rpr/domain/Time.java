@@ -8,7 +8,7 @@ public class Time {
     private int thousands;
 
 
-    public Time(int minutes, int seconds, int thousands, String name, int id) {
+    public Time(int minutes, int seconds, int thousands) {
         this.minutes = minutes;
         this.seconds = seconds;
         this.thousands = thousands;

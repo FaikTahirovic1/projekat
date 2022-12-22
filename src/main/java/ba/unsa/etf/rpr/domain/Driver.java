@@ -16,6 +16,13 @@ public class Driver implements Idable {
         this.id = id;
         this.age = age;
     }
+    public Driver(){
+        this.name ="";
+        this.team= new Team();
+        this.favouriteTrack=new Track();
+        this.id = 1;
+        this.age = 0;
+    }
 
     public String getName() {
         return name;
