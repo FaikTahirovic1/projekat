@@ -1,6 +1,6 @@
 package ba.unsa.etf.rpr;
 
-import ba.unsa.etf.rpr.controllers.HomeController;
+import ba.unsa.etf.rpr.controllers.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,14 +14,12 @@ import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 public class AppFX extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        StackPane pane = new StackPane();
-        pane.getChildren().add(new Button("OK"));
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/home-layout.fxml"));
-        HomeController homeController = new HomeController();
-        fxmlLoader.setController(homeController);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/username-layout.fxml"));
+        //LoginController homeController = new LoginController();
+        //fxmlLoader.setController(homeController);
         Parent root = fxmlLoader.load();
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-        stage.setTitle("Home");
+        stage.setTitle("Login");
         stage.show();
     }
 }
