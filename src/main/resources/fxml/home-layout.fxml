@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="375.0" layoutY="174.0" mnemonicParsing="false" text="Neka tipka" />
+      <PasswordField layoutX="135.0" layoutY="174.0" promptText="Sifra" />
+      <TextField layoutX="136.0" layoutY="109.0" promptText="Username" />
+   </children>
+</AnchorPane>
