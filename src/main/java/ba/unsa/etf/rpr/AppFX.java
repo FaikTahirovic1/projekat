@@ -15,11 +15,12 @@ public class AppFX extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/username-layout.fxml"));
-        //LoginController homeController = new LoginController();
-        //fxmlLoader.setController(homeController);
+        LoginController homeController = new LoginController();
+        fxmlLoader.setController(homeController);
         Parent root = fxmlLoader.load();
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         stage.setTitle("Login");
         stage.show();
     }
+
 }
