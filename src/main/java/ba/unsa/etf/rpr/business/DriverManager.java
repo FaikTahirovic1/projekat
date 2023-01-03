@@ -11,8 +11,7 @@ public class DriverManager {
     public List<Driver> getAll() throws F1Exception {
         return DaoFactory.driverDao().getAll();
     }
-
-    public List<Driver> searchDrivers(String text) throws F1Exception {
+    public static List<Driver> searchDrivers(String text) throws F1Exception {
         return DaoFactory.driverDao().searchByText(text);
     }
 
