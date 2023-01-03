@@ -8,15 +8,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
-public class LoginController {
-
-
+public class HomeController {
     @FXML
 
     void initialize() {
@@ -44,7 +41,6 @@ public class LoginController {
         }
     }
     public void openHome(ActionEvent actionevent){
-        openDialog("Home","/fxml/HomePage.fxml",new HomeController());
+        openDialog("Home","/fxml/HomePage.fxml",null);
     }
-
 }
