@@ -43,5 +43,8 @@ public class LoginController {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
     }
+    public void openHome(ActionEvent actionevent){
+        openDialog("Home","/fxml/HomePage.fxml",null);
+    }
 
 }
