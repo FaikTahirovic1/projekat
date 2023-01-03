@@ -30,63 +30,70 @@ public AbstractDao(String tableName) {
         }
     }
 
-    public Connection getConnection() {
-        return connection;
+    public static Connection getConnection(){
+        return AbstractDao.connection;
     }
+    public static void closeConnection() {
+        System.out.println("pozvana metoda za zatvaranje konekcije");
+        if(connection!=null) {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                //throw new RuntimeException(e);
+                e.printStackTrace();
+                System.out.println("REMOVE CONNECTION METHOD ERROR: Unable to close connection on database");
+            }
+        }
+    }
+
     public abstract  T row2object (ResultSet rs) throws F1Exception;
     public abstract Map<String,Object> object2row(T object);
-    public T getById(int id)throws RuntimeException{
-       String query = "SELECT * FROM " + this.tableName+" WHERE id = ?";
-       try{
-           PreparedStatement stmt = this.connection.prepareStatement(query);
-           stmt.setInt(1,id);
-           ResultSet rs = stmt.executeQuery();
-           if(rs.next()){
-               T result = row2object(rs);
-               rs.close();
-               return result;
-
-           } else{
-               throw new RuntimeException("Onbjekat nije nadjen");
-           }
-
-       }catch (SQLException e){
-           throw new RuntimeException(e.getMessage(),e);
-       }catch(F1Exception e){
-           throw new RuntimeException(e.getMessage(),e);
-       }
-
+    public T getById(int id) throws F1Exception {
+        return executeQueryUnique("SELECT * FROM "+this.tableName+" WHERE id = ?", new Object[]{id});
     }
     public T getByDriver(ba.unsa.etf.rpr.domain.Driver d)throws F1Exception{
         return getById(d.getId());
 
     }
-    public List<T> getAll() throws RuntimeException {
-        String query = "SELECT * FROM "+ tableName;
-        List<T> results = new ArrayList<T>();
-        try{
+
+    public List<T> getAll() throws F1Exception {
+        return executeQuery("SELECT * FROM "+ tableName, null);
+    }
+
+    public List<T> executeQuery(String query, Object[] params) throws F1Exception{
+        try {
             PreparedStatement stmt = getConnection().prepareStatement(query);
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()){ // result set is iterator.
-                T object = row2object(rs);
-                results.add(object);
+            if (params != null){
+                for(int i = 1; i <= params.length; i++){
+                    stmt.setObject(i, params[i-1]);
+                }
             }
-            rs.close();
-            return results;
-        }catch (SQLException e){
-            throw new RuntimeException(e.getMessage(), e);
-        }catch (F1Exception e){
-            throw new RuntimeException(e.getMessage(), e);
+            ResultSet rs = stmt.executeQuery();
+            ArrayList<T> resultList = new ArrayList<>();
+            while (rs.next()) {
+                resultList.add(row2object(rs));
+            }
+            return resultList;
+        } catch (SQLException e) {
+            throw new F1Exception(e.getMessage(), e);
         }
     }
-    public void delete(int id) throws RuntimeException {
+    public void delete(int id) throws F1Exception {
         String sql = "DELETE FROM "+tableName+" WHERE id = ?";
         try{
             PreparedStatement stmt = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             stmt.setObject(1, id);
             stmt.executeUpdate();
         }catch (SQLException e){
-            throw new RuntimeException(e.getMessage(), e);
+            throw new F1Exception(e.getMessage(), e);
+        }
+    }
+    public T executeQueryUnique(String query, Object[] params) throws F1Exception{
+        List<T> result = executeQuery(query, params);
+        if (result != null && result.size() == 1){
+            return result.get(0);
+        }else{
+            throw new F1Exception("Object not found");
         }
     }
     private String prepareUpdateParts(Map<String, Object> row){

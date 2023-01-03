@@ -33,13 +33,13 @@ import java.util.List;
          * Hard delete of item from database with given id
          * @param id - primary key of entity
          */
-        void delete(int id) throws RuntimeException;
+        void delete(int id) throws F1Exception;
 
         /**
          * Lists all entities from database. WARNING: Very slow operation because it reads all records.
          * @return List of entities from database
          */
-        List<T> getAll() throws RuntimeException;
+        List<T> getAll() throws F1Exception;
         //T getByDriver(int id) throws F1Exception;
     }
 
