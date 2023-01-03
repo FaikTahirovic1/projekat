@@ -20,8 +20,8 @@ import javafx.stage.StageStyle;
 import ba.unsa.etf.rpr.business.*;
 
 public class DriverScreenController {
-    public Pane DriversScreen;
-    public TextField searchbox;
+    public Pane driversScreen;
+    public TextField searchDrivers;
     public TableView driversTable;
     public TableColumn<Driver, String> driversColumn;
     public TableColumn<Driver, String> teamsColumn;
@@ -33,7 +33,7 @@ public class DriverScreenController {
     }
     public void searchDrivers(ActionEvent event){
         try {
-            driversTable.setItems(FXCollections.observableList(DriverManager.searchDrivers(searchbox.getText())));
+            driversTable.setItems(FXCollections.observableList(DriverManager.searchDrivers(searchDrivers.getText())));
             driversTable.refresh();
         } catch (F1Exception e) {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();

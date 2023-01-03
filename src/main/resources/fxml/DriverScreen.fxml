@@ -5,14 +5,14 @@
 <?import javafx.scene.text.*?>
 
 <?import javafx.geometry.Insets?>
-<Pane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: GHOSTWHITE;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id ="driversScreen" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: GHOSTWHITE;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text layoutX="263.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Drivers" textAlignment="CENTER" underline="true">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField layoutX="56.0" layoutY="155.0" promptText="Driver's name" />
+      <TextField fx:id="searchDrivers" layoutX="56.0" layoutY="155.0" promptText="Drivers' name" />
       <Button layoutX="274.0" layoutY="155.0" mnemonicParsing="false" text="Search" onAction="#searchDrivers"/>
       <TableView layoutX="189.0" layoutY="200.0" prefHeight="200.0" prefWidth="149.0">
         <columns>
