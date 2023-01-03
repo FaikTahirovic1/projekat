@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<Pane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: GHOSTWHITE;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="263.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Drivers" textAlignment="CENTER" underline="true">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <TextField layoutX="56.0" layoutY="155.0" promptText="Driver's name" />
+      <Button layoutX="274.0" layoutY="155.0" mnemonicParsing="false" text="Search" />
+   </children>
+</Pane>
