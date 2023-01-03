@@ -43,4 +43,7 @@ public class HomeController {
     public void openHome(ActionEvent actionevent){
         openDialog("Home","/fxml/HomePage.fxml",null);
     }
+    public void openDriverScreen(ActionEvent actionEvent){
+        openDialog("Drivers","/fxml/DriverScreen.fxml", new DriverScreenController());
+    }
 }
