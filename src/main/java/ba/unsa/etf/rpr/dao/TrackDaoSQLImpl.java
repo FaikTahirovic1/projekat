@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class TrackDaoSQLImpl extends AbstractDao<Track> implements TrackDao{
+    private static  TrackDaoSQLImpl instance = null;
     public TrackDaoSQLImpl(){
         super("Track");
     }

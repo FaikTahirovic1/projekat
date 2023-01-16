@@ -14,6 +14,12 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class DriverDaoSQLImpl extends AbstractDao<Driver> implements DriverDao {
+    private static  DriverDaoSQLImpl instance = null;
+    public static DriverDaoSQLImpl getInstance(){
+        if(instance==null)
+            instance = new DriverDaoSQLImpl();
+        return instance;
+    }
     public DriverDaoSQLImpl() {
         super("Drivers");
 
