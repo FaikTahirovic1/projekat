@@ -14,6 +14,9 @@ public class TrackDaoSQLImpl extends AbstractDao<Track> implements TrackDao{
             instance = new TrackDaoSQLImpl();
         return instance;
     }
+    public void removeInstance(){
+        if(instance != null)instance = null;
+    }
     public TrackDaoSQLImpl(){
         super("Track");
     }

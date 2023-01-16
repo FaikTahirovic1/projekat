@@ -20,14 +20,14 @@ import java.util.List;
          * @param item bean for saving to database
          * @return saved item with id field populated
          */
-        T add(T item) throws RuntimeException;
+        T add(T item) throws F1Exception;
 
         /**
          * Fully updates entity in database based on id (primary) match.
          * @param item - bean to be updated. id must be populated
          * @return updated version of bean
          */
-        T update(T item) throws RuntimeException;
+        T update(T item) throws F1Exception;
 
         /**
          * Hard delete of item from database with given id
