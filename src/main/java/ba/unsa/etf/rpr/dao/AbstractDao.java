@@ -25,7 +25,17 @@ public AbstractDao(String tableName) {
                 AbstractDao.connection = DriverManager.getConnection(url, username, password);
             } catch (Exception e) {
                 e.printStackTrace();
-                System.exit(0);
+            }finally {
+                Runtime.getRuntime().addShutdownHook(new Thread(){
+                    @Override
+                    public void run(){
+                        try{
+                            connection.close();
+                        }catch (SQLException e){
+                            e.printStackTrace();
+                        }
+                    }
+                });
             }
         }
     }
@@ -125,7 +135,7 @@ public AbstractDao(String tableName) {
                 questions.append(",");
             }
         }
-        return new AbstractMap.SimpleEntry<String,String>(columns.toString(), questions.toString());
+        return new AbstractMap.SimpleEntry<>(columns.toString(), questions.toString());
     }
     public T add(T item) throws RuntimeException{
         Map<String, Object> row = object2row(item);
