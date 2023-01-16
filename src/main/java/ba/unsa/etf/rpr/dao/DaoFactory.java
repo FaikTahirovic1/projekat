@@ -1,7 +1,7 @@
 package ba.unsa.etf.rpr.dao;
 
 public class DaoFactory {
-    private static final TeamDao teamDao =  new TeamDaoSQLImpl();
+    private static final TeamDao teamDao =  TeamDaoSQLImpl.getInstance();
     private static final TrackDao trackDao = new TrackDaoSQLImpl();
     private static final DriverDao driverDao = new DriverDaoSQLImpl();
     private DaoFactory(){

@@ -10,6 +10,12 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class TeamDaoSQLImpl extends AbstractDao<Team> implements  TeamDao{
+    private static  TeamDaoSQLImpl instance = null;
+    public static TeamDaoSQLImpl getInstance(){
+        if(instance==null)
+            instance = new TeamDaoSQLImpl();
+        return instance;
+    }
     public TeamDaoSQLImpl(){
         super("Team");
     }
