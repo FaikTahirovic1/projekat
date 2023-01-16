@@ -12,7 +12,7 @@ private String tableName;
 
 public AbstractDao(String tableName) {
     this.tableName = tableName;
-    if(connection==null) createConnection();
+    createConnection();
 }
     private static void createConnection(){
         if(AbstractDao.connection==null) {
