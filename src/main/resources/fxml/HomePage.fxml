@@ -34,7 +34,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="209.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Main Menu">
+      <Text layoutX="209.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Main" fx:id="mainmenu" >
          <font>
             <Font size="36.0" />
          </font>
