@@ -8,20 +8,26 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 public class HomeController {
-    private String username;
+    public String username;
+    @FXML
+    public Text mainmenu;
     public HomeController(String s){
         username=new String(s);
+        mainmenu=new Text();
+        mainmenu.setText(s);
 
     }
     @FXML
 
     void initialize() {
+
 
     }
     public void closeApp(ActionEvent actionEvent){
