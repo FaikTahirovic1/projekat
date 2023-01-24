@@ -20,7 +20,6 @@ import javafx.stage.StageStyle;
 import ba.unsa.etf.rpr.business.*;
 
 public class DriverScreenController {
-    public Pane driversScreen;
     public TextField searchDrivers;
     public TableView driversTable;
     public TableColumn<Driver, String> driversColumn;
