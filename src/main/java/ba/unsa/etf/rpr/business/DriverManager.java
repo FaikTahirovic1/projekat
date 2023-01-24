@@ -16,6 +16,23 @@ public class DriverManager {
     }
 
     public void delete(int id) throws F1Exception{
-        DaoFactory.driverDao().delete(id);
+        try{
+            DaoFactory.driverDao().delete(id);
+        }catch (F1Exception e){
+            if (e.getMessage().contains("FOREIGN KEY")){
+                throw new F1Exception("Cannot delete category which is related to quotes. First delete related quotes before deleting category.");
+            }
+            throw e;
+        }
+    }
+    public Driver add(Driver driver) throws F1Exception {
+        try{
+            return DaoFactory.driverDao().add(driver);
+        }catch(F1Exception e){
+            if (e.getMessage().contains("UQ_NAME")){
+                throw new F1Exception("Driver with same name exists");
+            }
+            throw e;
+        }
     }
 }
