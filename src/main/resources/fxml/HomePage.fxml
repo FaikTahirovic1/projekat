@@ -24,9 +24,9 @@
       </MenuBar>
       <MenuButton layoutX="362.0" layoutY="165.0" mnemonicParsing="false" text="MenuButton">
         <items>
-          <MenuItem mnemonicParsing="false" text="Drivers" onAction="#openDriverScreen"/>
-          <MenuItem mnemonicParsing="false" text="Teams" onAction="#openTeamScreen"/>
-          <MenuItem mnemonicParsing="false" text="Tracks" onAction="#openTrackScreen"/>
+          <MenuItem fx:id="buttonDriver" mnemonicParsing="false" text="Drivers" onAction="#openDriverScreen"/>
+          <MenuItem fx:id="buttonTeam" mnemonicParsing="false" text="Teams" onAction="#openTeamScreen"/>
+          <MenuItem fx:id="buttonTrack" mnemonicParsing="false" text="Tracks" onAction="#openTrackScreen"/>
         </items>
       </MenuButton>
       <Text layoutX="52.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please select one of the options on the right" wrappingWidth="199.77734375">
