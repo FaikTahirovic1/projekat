@@ -14,6 +14,11 @@ import javafx.stage.StageStyle;
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 public class HomeController {
+    private String username;
+    public HomeController(String s){
+        username=new String(s);
+
+    }
     @FXML
 
     void initialize() {

@@ -25,8 +25,12 @@ public class LoginController {
     public TextField loginField;
     @FXML
     private SimpleStringProperty username;
+
     public LoginController(){
         username = new SimpleStringProperty("");
+    }
+    public String getusername(){
+        return String.valueOf(username);
     }
 
     @FXML
@@ -60,8 +64,9 @@ public class LoginController {
     public void openHome(ActionEvent actionevent){
 
         System.out.println(loginField.getText());
+        String s = getusername();
 
-        openDialog("Home","/fxml/HomePage.fxml",new HomeController());
+        openDialog("Home","/fxml/HomePage.fxml",new HomeController(s));
     }
 
 }
