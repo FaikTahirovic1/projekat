@@ -1,14 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="j" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url(F1.png);" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Button layoutX="375.0" layoutY="174.0" mnemonicParsing="false" onAction="#openHome" text="Neka tipka" />
-      <PasswordField layoutX="135.0" layoutY="174.0" promptText="Sifra" />
-      <TextField layoutX="136.0" layoutY="109.0" promptText="Username" />
-      <Button fx:id="about_button" layoutX="27.0" layoutY="334.0" mnemonicParsing="false" onAction="#openAbout" text="About" />
-
-   </children>
-</AnchorPane>
+<BorderPane id="j" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url(F1.png);" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <right>
+      <Button mnemonicParsing="false" text="Sign in" BorderPane.alignment="CENTER" onAction="#openHome">
+         <BorderPane.margin>
+            <Insets right="50.0" top="100.0" />
+         </BorderPane.margin>
+      </Button>
+   </right>
+   <top>
+      <ImageView fitHeight="144.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image fx:id="f1slika" url="@F1.png" />
+         </image>
+      </ImageView>
+   </top>
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <PasswordField promptText="Password" GridPane.rowIndex="2" />
+            <TextField promptText="Username" GridPane.rowIndex="1">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <BorderPane.margin>
+            <Insets left="50.0" />
+         </BorderPane.margin>
+      </GridPane>
+   </center>
+</BorderPane>
