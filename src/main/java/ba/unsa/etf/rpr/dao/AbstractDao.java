@@ -20,9 +20,13 @@ public AbstractDao(String tableName) {
                 Properties p = new Properties();
                 p.load(ClassLoader.getSystemResource("application.properties").openStream());
                 String url = p.getProperty("db.connection_string");
+
                 String username = p.getProperty("db.username");
                 String password = p.getProperty("db.password");
-                AbstractDao.connection = DriverManager.getConnection(url, username, password);
+
+                AbstractDao.connection = DriverManager.getConnection("jdbc:mysql://sql.freedb.tech:3306/freedb_rprbaza123", "freedb_ftahirovic123", "&WyMMXeq$w7aTwD");
+
+                System.out.println("Proslo");
             } catch (Exception e) {
                 e.printStackTrace();
             }finally {
@@ -59,7 +63,7 @@ public AbstractDao(String tableName) {
     public abstract  T row2object (ResultSet rs) throws F1Exception;
     public abstract Map<String,Object> object2row(T object);
     public T getById(int id) throws F1Exception {
-        return executeQueryUnique("SELECT * FROM "+this.tableName+" WHERE id = ?", new Object[]{id});
+        return executeQueryUnique("SELECT * FROM "+this.tableName+" WHERE idTeam = ?", new Object[]{id});
     }
     public T getByDriver(ba.unsa.etf.rpr.domain.Driver d)throws F1Exception{
         return getById(d.getId());
@@ -73,18 +77,26 @@ public AbstractDao(String tableName) {
     public List<T> executeQuery(String query, Object[] params) throws F1Exception{
         try {
             PreparedStatement stmt = getConnection().prepareStatement(query);
+
             if (params != null){
                 for(int i = 1; i <= params.length; i++){
                     stmt.setObject(i, params[i-1]);
                 }
             }
+
+
             ResultSet rs = stmt.executeQuery();
+            System.out.println("Ovo oke");
             ArrayList<T> resultList = new ArrayList<>();
+
             while (rs.next()) {
                 resultList.add(row2object(rs));
             }
+
             return resultList;
         } catch (SQLException e) {
+            System.out.println("Ovo oke2");
+
             throw new F1Exception(e.getMessage(), e);
         }
     }

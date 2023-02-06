@@ -27,6 +27,7 @@ public class TeamDaoSQLImpl extends AbstractDao<Team> implements  TeamDao{
             team.setCountry(rs.getString("Country"));
             team.setName(rs.getString("Name"));
             team.setDriver1(DaoFactory.driverDao().getById(rs.getInt("id_driver1")));
+
             team.setDriver2(DaoFactory.driverDao().getById(rs.getInt("id_driver2")));
             return team;
 

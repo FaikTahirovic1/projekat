@@ -1,8 +1,10 @@
 package ba.unsa.etf.rpr;
 
+import ba.unsa.etf.rpr.Exception.F1Exception;
 import ba.unsa.etf.rpr.business.DriverManager;
 import ba.unsa.etf.rpr.dao.Dao;
 import ba.unsa.etf.rpr.domain.Driver;
+import ba.unsa.etf.rpr.domain.Team;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,14 +14,8 @@ import java.util.List;
  *
  */
 public class App {
-    public static void main(String[] args) {
-        List<Driver> lista = new ArrayList<Driver>();
-        DriverManager a = new DriverManager();
-        try {
-            lista = a.getAll();
-            System.out.println("Velicina je " + lista.size());
-        } catch (Exception e) {
-            System.out.println("Ne radi");
-        }
+    public static void main(String[] args) throws F1Exception {
+        DriverManager manager = new DriverManager();
+        System.out.println(manager.getAll().size());
     }
 }
