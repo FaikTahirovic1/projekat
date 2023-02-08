@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.business;
 
 import ba.unsa.etf.rpr.Exception.F1Exception;
 import ba.unsa.etf.rpr.dao.DaoFactory;
+import ba.unsa.etf.rpr.domain.Driver;
 import ba.unsa.etf.rpr.domain.Team;
 
 import java.util.List;
@@ -15,5 +16,15 @@ public class TeamManager {
     }
     public void delete(int id) throws F1Exception{
         DaoFactory.teamDao().delete(id);
+    }
+    public Team add(Team team) throws F1Exception {
+        try{
+            return DaoFactory.teamDao().add(team);
+        }catch(F1Exception e){
+            if (e.getMessage().contains("UQ_NAME")){
+                throw new F1Exception("Team with same name exists");
+            }
+            throw e;
+        }
     }
 }

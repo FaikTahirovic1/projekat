@@ -32,17 +32,19 @@ public class DriverDaoSQLImpl extends AbstractDao<Driver> implements DriverDao {
             d.setId(rs.getInt("id"));
             d.setAge(rs.getInt("Age"));
             d.setName(rs.getString("Name"));
-            //d.setFavouriteTrack(DaoFactory.trackDao().getById(rs.getInt("favouritetrackid")));
-            d.setTeam(DaoFactory.teamDao().getById(rs.getInt("teamid")));
+            d.setFavouriteTrack(DaoFactory.trackDao().getById(rs.getInt("favouritetrackid")));
+            //d.setTeam(DaoFactory.teamDao().getById(rs.getInt("teamid")));
             return d;
         } catch (Exception e) {
             throw new F1Exception(e.getMessage(), e);
         }
     }
+
     @Override
     public Driver getById(int id) throws F1Exception {
 
         return executeQueryUnique("SELECT * FROM "+"Drivers"+" WHERE id = ?", new Object[]{id});
+
     }
 
     public Map<String, Object> object2row(Driver d) {

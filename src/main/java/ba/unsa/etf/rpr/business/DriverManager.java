@@ -8,7 +8,7 @@ import ba.unsa.etf.rpr.domain.Driver;
 import java.util.List;
 
 public class DriverManager {
-    public List<Driver> getAll() throws F1Exception {
+    public static List<Driver> getAll() throws F1Exception {
         return DaoFactory.driverDao().getAll();
     }
     public static List<Driver> searchDrivers(String text) throws F1Exception {

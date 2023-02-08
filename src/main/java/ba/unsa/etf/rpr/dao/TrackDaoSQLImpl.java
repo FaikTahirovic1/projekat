@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.dao;
 
+import ba.unsa.etf.rpr.Exception.F1Exception;
 import ba.unsa.etf.rpr.domain.Time;
 import ba.unsa.etf.rpr.domain.Track;
 
@@ -36,6 +37,7 @@ public class TrackDaoSQLImpl extends AbstractDao<Track> implements TrackDao{
             throw new RuntimeException(e.getMessage(),e);
         }
     }
+
     public Map<String,Object> object2row(Track t){
         Map<String,Object> objekat = new TreeMap<String,Object>();
         objekat.put("idTrack",t.getId());
@@ -43,6 +45,9 @@ public class TrackDaoSQLImpl extends AbstractDao<Track> implements TrackDao{
         objekat.put("Name",t.getName());
         objekat.put("Time",t.getBestTime().timeToInt());
         return objekat;
+    }
+    public Track getById(int id) throws F1Exception {
+        return executeQueryUnique("SELECT * FROM "+"Track"+" WHERE idTrack = ?", new Object[]{id});
     }
 
 }
