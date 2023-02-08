@@ -22,12 +22,17 @@ public class TeamDaoSQLImpl extends AbstractDao<Team> implements  TeamDao{
     @Override
     public Team row2object(ResultSet rs)throws RuntimeException{
         try{
+
+            //System.out.println("id mu je " + rs.getInt("id_driver2") );
+            //System.out.println("vrti li vrti");
             Team team = new Team();
             team.setId(rs.getInt("idTeam"));
-            team.setCountry(rs.getString("Country"));
+            //System.out.println("vrti li vrti");
             team.setName(rs.getString("Name"));
+            //System.out.println("Ime je " + team.getName());
+            team.setCountry(rs.getString("Country"));
             team.setDriver1(DaoFactory.driverDao().getById(rs.getInt("id_driver1")));
-
+            //System.out.println("Id prvog vozaca je " + team.getDriver1().getId());
             team.setDriver2(DaoFactory.driverDao().getById(rs.getInt("id_driver2")));
             return team;
 
@@ -35,6 +40,7 @@ public class TeamDaoSQLImpl extends AbstractDao<Team> implements  TeamDao{
             throw new RuntimeException("Ne postoji kolona");
         }
     }
+
     @Override
     public Map<String,Object> object2row(Team team){
         Map<String,Object> row = new TreeMap<String, Object>();
@@ -74,5 +80,17 @@ public class TeamDaoSQLImpl extends AbstractDao<Team> implements  TeamDao{
              throw new F1Exception(e.getMessage(),e);
          }
     }
+    @Override
+    public Team getById(int id) throws F1Exception {
+        System.out.println("ovo");
+        return executeQueryUnique("SELECT * FROM "+"Team"+" WHERE idTeam = ?", new Object[]{id});
+
+    }
+    @Override
+    public List<Team> getAll() throws F1Exception {
+
+        return executeQuery("SELECT * FROM "+ "Team", null);
+    }
+
 
 }
