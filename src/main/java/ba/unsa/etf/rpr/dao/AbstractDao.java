@@ -61,6 +61,7 @@ public AbstractDao(String tableName) {
     }
 
     public abstract  T row2object (ResultSet rs) throws F1Exception;
+
     public abstract Map<String,Object> object2row(T object);
     public T getById(int id) throws F1Exception {
         return executeQueryUnique("SELECT * FROM "+this.tableName+" WHERE idTeam = ?", new Object[]{id});
@@ -71,11 +72,13 @@ public AbstractDao(String tableName) {
     }
 
     public List<T> getAll() throws F1Exception {
+
         return executeQuery("SELECT * FROM "+ tableName, null);
     }
 
     public List<T> executeQuery(String query, Object[] params) throws F1Exception{
         try {
+            //System.out.println("Izvrsi");
             PreparedStatement stmt = getConnection().prepareStatement(query);
 
             if (params != null){
@@ -84,22 +87,25 @@ public AbstractDao(String tableName) {
                 }
             }
 
-
             ResultSet rs = stmt.executeQuery();
-            System.out.println("Ovo oke");
+            //System.out.println(rs);
             ArrayList<T> resultList = new ArrayList<>();
 
+
             while (rs.next()) {
+
                 resultList.add(row2object(rs));
+
+
             }
 
             return resultList;
         } catch (SQLException e) {
-            System.out.println("Ovo oke2");
 
             throw new F1Exception(e.getMessage(), e);
         }
     }
+
     public void delete(int id) throws F1Exception {
         String sql = "DELETE FROM "+tableName+" WHERE id = ?";
         try{
@@ -111,6 +117,7 @@ public AbstractDao(String tableName) {
         }
     }
     public T executeQueryUnique(String query, Object[] params) throws F1Exception{
+
         List<T> result = executeQuery(query, params);
         if (result != null && result.size() == 1){
             return result.get(0);
