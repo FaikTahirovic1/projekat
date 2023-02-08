@@ -63,6 +63,7 @@ public class DriverScreenController {
     private void refreshDrivers(){
         try {
             driversTable.setItems(FXCollections.observableList(manager.getAll()));
+
             driversTable.refresh();
         } catch (F1Exception  e) {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();

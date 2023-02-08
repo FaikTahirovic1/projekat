@@ -14,7 +14,7 @@
       </Text>
       <TextField fx:id="searchDrivers" layoutX="56.0" layoutY="155.0" promptText="Drivers' name" />
       <Button layoutX="274.0" layoutY="155.0" mnemonicParsing="false" onAction="#searchDrivers" text="Search" />
-      <TableView layoutX="189.0" layoutY="200.0" prefHeight="200.0" prefWidth="149.0">
+      <TableView layoutX="189.0" layoutY="200.0" prefHeight="200.0" prefWidth="149.0" fx:id="driversTable">
         <columns>
           <TableColumn fx:id="driversColumn" prefWidth="75.0" text="name" />
           <TableColumn fx:id="ageColumn" prefWidth="75.0" text="age" />
