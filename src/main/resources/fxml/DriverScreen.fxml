@@ -27,5 +27,6 @@
           </padding>
       </TableView>
       <Button layoutX="163.0" layoutY="97.0" mnemonicParsing="false" onAction="#showAllDrivers" text="Show all" />
+      <Button layoutX="379.0" layoutY="155.0" mnemonicParsing="false" text="Sort by age" onAction="#sortByAge" />
    </children>
 </Pane>

@@ -2,7 +2,7 @@ package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
 
-public class Driver implements Idable {
+public class Driver implements Idable, Comparable<Driver> {
     private String name;
     private Team team;
     private Track favouriteTrack;
@@ -86,5 +86,10 @@ public class Driver implements Idable {
                 ", id=" + id +
                 ", age=" + age +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Driver d) {
+        return this.getAge()-d.getAge();
     }
 }

@@ -81,7 +81,7 @@ public class TeamDaoSQLImpl extends AbstractDao<Team> implements  TeamDao{
     }
     @Override
     public Team getById(int id) throws F1Exception {
-        System.out.println("ovo");
+        //System.out.println("ovo");
         return executeQueryUnique("SELECT * FROM "+"Team"+" WHERE idTeam = ?", new Object[]{id});
 
     }

@@ -26,7 +26,6 @@ public AbstractDao(String tableName) {
 
                 AbstractDao.connection = DriverManager.getConnection("jdbc:mysql://sql.freedb.tech:3306/freedb_rprbaza123", "freedb_ftahirovic123", "&WyMMXeq$w7aTwD");
 
-                System.out.println("Proslo");
             } catch (Exception e) {
                 e.printStackTrace();
             }finally {

@@ -24,6 +24,9 @@ import javafx.stage.StageStyle;
 import ba.unsa.etf.rpr.business.*;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 
 public class DriverScreenController {
@@ -70,13 +73,27 @@ public class DriverScreenController {
     }
     private void refreshDrivers(){
         try {
-            System.out.println(manager.getAll().get(0).getTeam());
             driversTable.setItems(FXCollections.observableList(manager.getAll()));
-
             driversTable.refresh();
         } catch (F1Exception  e) {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
+    }
+    public void sortByAge() throws F1Exception {
+        ArrayList<Driver> vozaci = (ArrayList<Driver>) manager.getAll();
+        Collections.sort(vozaci,new Comparator<Driver>(){
+            public int compare(Driver o1, Driver o2)
+            {
+                if(o1.getAge()<o2.getAge())return -1;
+                if(o1.getAge()>o2.getAge())return 1;
+                return 0;
+
+            }
+        });
+        for(int i = 0; i<vozaci.size();i++)
+        System.out.println(vozaci.get(i));
+        driversTable.setItems(FXCollections.observableList(vozaci));
+        driversTable.refresh();
     }
 
 }
