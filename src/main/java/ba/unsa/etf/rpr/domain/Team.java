@@ -76,12 +76,6 @@ public class Team implements Idable {
 
     @Override
     public String toString() {
-        return "Tim{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", country='" + country + '\'' +
-                ", driver1=" + driver1 +
-                ", driver2=" + driver2 +
-                '}';
+        return getName();
     }
 }
