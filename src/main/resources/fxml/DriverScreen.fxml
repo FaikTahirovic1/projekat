@@ -14,11 +14,13 @@
       </Text>
       <TextField fx:id="searchDrivers" layoutX="56.0" layoutY="155.0" promptText="Drivers' name" />
       <Button layoutX="274.0" layoutY="155.0" mnemonicParsing="false" onAction="#searchDrivers" text="Search" />
-      <TableView fx:id="driversTable" layoutX="189.0" layoutY="200.0" prefHeight="200.0" prefWidth="270.0">
+      <TableView fx:id="driversTable" layoutX="90.0" layoutY="200.0" prefHeight="200.0" prefWidth="430.0">
         <columns>
-          <TableColumn fx:id="driversColumn" prefWidth="75.0" text="name" />
-          <TableColumn fx:id="ageColumn" prefWidth="75.0" text="age" />
-            <TableColumn fx:id="trackColumn" prefWidth="110.0" text="favourite track" />
+          <TableColumn fx:id="driversColumn" prefWidth="133.0" text="name" />
+          <TableColumn fx:id="ageColumn" prefWidth="54.0" text="age" />
+            <TableColumn fx:id="trackColumn" prefWidth="133.0" text="favourite track" />
+            <TableColumn fx:id="teamColumn" prefWidth="100.0" text="team" />
+
         </columns>
           <padding>
               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

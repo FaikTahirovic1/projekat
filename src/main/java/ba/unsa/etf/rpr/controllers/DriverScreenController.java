@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.Exception.F1Exception;
 import ba.unsa.etf.rpr.domain.Driver;
+import ba.unsa.etf.rpr.domain.Team;
 import ba.unsa.etf.rpr.domain.Track;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -37,12 +38,15 @@ public class DriverScreenController {
     public TableColumn<Driver, Integer> ageColumn;
     @FXML
     public TableColumn<Driver, Track> trackColumn;
+    @FXML
+    public TableColumn<Driver, Team>teamColumn;
 
 
     public void initialize() {
         driversColumn.setCellValueFactory(new PropertyValueFactory<Driver, String>("name"));
         ageColumn.setCellValueFactory(new PropertyValueFactory<Driver, Integer>("age"));
         trackColumn.setCellValueFactory(new PropertyValueFactory<Driver, Track>("favouriteTrack"));
+        teamColumn.setCellValueFactory(new PropertyValueFactory<Driver, Team>("team"));
         refreshDrivers();
 
     }
@@ -66,6 +70,7 @@ public class DriverScreenController {
     }
     private void refreshDrivers(){
         try {
+            System.out.println(manager.getAll().get(0).getTeam());
             driversTable.setItems(FXCollections.observableList(manager.getAll()));
 
             driversTable.refresh();
