@@ -2,7 +2,9 @@ package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.Exception.F1Exception;
 import ba.unsa.etf.rpr.domain.Driver;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -19,15 +21,25 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import ba.unsa.etf.rpr.business.*;
 
-public class DriverScreenController {
-    public TextField searchDrivers;
-    public TableView driversTable;
-    public TableColumn<Driver, String> driversColumn;
-    public TableColumn<Driver, String> teamsColumn;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-    void initialize() {
+public class DriverScreenController {
+    private final DriverManager manager = new DriverManager();
+    @FXML
+    public TextField searchDrivers;
+    @FXML
+    public TableView driversTable;
+    @FXML
+    public TableColumn<Driver, String> driversColumn;
+    @FXML
+    public TableColumn<Driver, Integer> ageColumn;
+
+
+    public void initialize() {
         driversColumn.setCellValueFactory(new PropertyValueFactory<Driver, String>("name"));
-        teamsColumn.setCellValueFactory(new PropertyValueFactory<Driver, String>("team"));
+        ageColumn.setCellValueFactory(new PropertyValueFactory<Driver, Integer>("age"));
+        refreshDrivers();
 
     }
     public void searchDrivers(ActionEvent event){
@@ -38,4 +50,23 @@ public class DriverScreenController {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
     }
+    public void showAllDrivers(ActionEvent event) throws F1Exception {
+        for(int i = 0; i< DriverManager.getAll().size();i++){
+            System.out.println(DriverManager.getAll().get(i).getName());
+            //driversTable.setItems();
+            ObservableList<Driver> lista = FXCollections.observableList(DriverManager.getAll());
+            driversTable.setItems(lista);
+
+        }
+
+    }
+    private void refreshDrivers(){
+        try {
+            driversTable.setItems(FXCollections.observableList(manager.getAll()));
+            driversTable.refresh();
+        } catch (F1Exception  e) {
+            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
+        }
+    }
+
 }

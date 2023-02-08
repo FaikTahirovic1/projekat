@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<?import javafx.geometry.Insets?>
-<Pane fx:id ="driversScreen" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: GHOSTWHITE;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="driversScreen" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: GHOSTWHITE;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text layoutX="263.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Drivers" textAlignment="CENTER" underline="true">
          <font>
@@ -13,15 +13,16 @@
          </font>
       </Text>
       <TextField fx:id="searchDrivers" layoutX="56.0" layoutY="155.0" promptText="Drivers' name" />
-      <Button layoutX="274.0" layoutY="155.0" mnemonicParsing="false" text="Search" onAction="#searchDrivers"/>
+      <Button layoutX="274.0" layoutY="155.0" mnemonicParsing="false" onAction="#searchDrivers" text="Search" />
       <TableView layoutX="189.0" layoutY="200.0" prefHeight="200.0" prefWidth="149.0">
         <columns>
-          <TableColumn fx:id="driversColumn" prefWidth="75.0" text="Drivers" />
-          <TableColumn fx:id="teamsColumn" prefWidth="75.0" text="Teams" />
+          <TableColumn fx:id="driversColumn" prefWidth="75.0" text="name" />
+          <TableColumn fx:id="ageColumn" prefWidth="75.0" text="age" />
         </columns>
           <padding>
               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
           </padding>
       </TableView>
+      <Button layoutX="163.0" layoutY="97.0" mnemonicParsing="false" text="Show all" onAction="#showAllDrivers" />
    </children>
 </Pane>
