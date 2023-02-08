@@ -65,12 +65,7 @@ public class Track implements Idable {
 
     @Override
     public String toString() {
-        return "Track{" +
-                "country='" + country + '\'' +
-                ", bestTime=" + bestTime +
-                ", name='" + name + '\'' +
-                ", id=" + id +
-                '}';
+        return getName();
     }
 
 }

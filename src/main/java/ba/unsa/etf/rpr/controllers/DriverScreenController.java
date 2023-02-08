@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.Exception.F1Exception;
 import ba.unsa.etf.rpr.domain.Driver;
+import ba.unsa.etf.rpr.domain.Track;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -34,11 +35,14 @@ public class DriverScreenController {
     public TableColumn<Driver, String> driversColumn;
     @FXML
     public TableColumn<Driver, Integer> ageColumn;
+    @FXML
+    public TableColumn<Driver, Track> trackColumn;
 
 
     public void initialize() {
         driversColumn.setCellValueFactory(new PropertyValueFactory<Driver, String>("name"));
         ageColumn.setCellValueFactory(new PropertyValueFactory<Driver, Integer>("age"));
+        trackColumn.setCellValueFactory(new PropertyValueFactory<Driver, Track>("favouriteTrack"));
         refreshDrivers();
 
     }
