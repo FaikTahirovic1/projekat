@@ -23,17 +23,16 @@ public class TeamDaoSQLImpl extends AbstractDao<Team> implements  TeamDao{
     public Team row2object(ResultSet rs)throws RuntimeException{
         try{
 
-            //System.out.println("id mu je " + rs.getInt("id_driver2") );
-            //System.out.println("vrti li vrti");
+
             Team team = new Team();
             team.setId(rs.getInt("idTeam"));
             //System.out.println("vrti li vrti");
             team.setName(rs.getString("Name"));
             //System.out.println("Ime je " + team.getName());
             team.setCountry(rs.getString("Country"));
-            team.setDriver1(DaoFactory.driverDao().getById(rs.getInt("id_driver1")));
+            //team.setDriver1(DaoFactory.driverDao().getById(rs.getInt("id_driver1")));
             //System.out.println("Id prvog vozaca je " + team.getDriver1().getId());
-            team.setDriver2(DaoFactory.driverDao().getById(rs.getInt("id_driver2")));
+            //team.setDriver2(DaoFactory.driverDao().getById(rs.getInt("id_driver2")));
             return team;
 
         }catch(Exception e){

@@ -33,7 +33,7 @@ public class DriverDaoSQLImpl extends AbstractDao<Driver> implements DriverDao {
             d.setAge(rs.getInt("Age"));
             d.setName(rs.getString("Name"));
             d.setFavouriteTrack(DaoFactory.trackDao().getById(rs.getInt("favouritetrackid")));
-            //d.setTeam(DaoFactory.teamDao().getById(rs.getInt("teamid")));
+            d.setTeam(DaoFactory.teamDao().getById(rs.getInt("teamid")));
             return d;
         } catch (Exception e) {
             throw new F1Exception(e.getMessage(), e);
