@@ -155,7 +155,7 @@ public AbstractDao(String tableName) {
         }
         return new AbstractMap.SimpleEntry<>(columns.toString(), questions.toString());
     }
-    public T add(T item) throws RuntimeException{
+    public T add(T item) throws F1Exception{
         Map<String, Object> row = object2row(item);
         Map.Entry<String, String> columns = prepareInsertParts(row);
 
@@ -181,7 +181,9 @@ public AbstractDao(String tableName) {
 
             return item;
         }catch (SQLException e){
-            throw new RuntimeException(e.getMessage(), e);
+            //throw new F1Exception(e.getMessage(), e);
+            System.out.println("nes");
+            return null;
         }
     }
     public T update(T item) throws RuntimeException{

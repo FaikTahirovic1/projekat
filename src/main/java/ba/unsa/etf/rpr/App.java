@@ -7,6 +7,7 @@ import ba.unsa.etf.rpr.business.TrackManager;
 import ba.unsa.etf.rpr.dao.Dao;
 import ba.unsa.etf.rpr.domain.Driver;
 import ba.unsa.etf.rpr.domain.Team;
+import ba.unsa.etf.rpr.domain.Time;
 import ba.unsa.etf.rpr.domain.Track;
 
 import java.util.ArrayList;
@@ -26,6 +27,13 @@ public class App {
         TrackManager trm = new TrackManager();
         System.out.println(trm.getAll().size());
         ArrayList<Track> staze = (ArrayList<Track>) trm.getAll();
+        Track staza = new Track();
+        staza.setName("Abu Dhabi GP");
+        staza.setId(6);
+        staza.setCountry("Abu Dhabi");
+        staza.setBestTime(new Time(19112));
+
+        trm.add(staza);
 
 
 
