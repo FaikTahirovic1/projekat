@@ -22,13 +22,21 @@
          <children>
             <Button mnemonicParsing="false" onAction="#createTrack" text="Create">
                <HBox.margin>
-                  <Insets right="10.0" />
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" text="Fans">
+               <HBox.margin>
+                  <Insets right="20.0" />
                </HBox.margin>
             </Button>
             <Button mnemonicParsing="false" onAction="#updateTrack" text="Update">
                <HBox.margin>
-                  <Insets right="10.0" />
+                  <Insets right="20.0" />
                </HBox.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
             </Button>
             <Button mnemonicParsing="false" onAction="#deleteTrack" text="Delete" />
          </children>
