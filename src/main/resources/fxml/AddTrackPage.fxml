@@ -5,10 +5,13 @@
 
 <Pane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="432.0" layoutY="188.0" mnemonicParsing="false" text="Create Track" onAction="#createTrack"/>
-      <TextField layoutX="86.0" layoutY="48.0" promptText="Track Name" fx:id="trackName"/>
-      <TextField layoutX="86.0" layoutY="105.0" promptText="Track Country" fx:id="trackCountry" />
-      <TextField layoutX="86.0" layoutY="163.0" promptText="Track Time" fx:id="trackTime"/>
-      <TextField layoutX="86.0" layoutY="223.0" promptText="Track id" fx:id="trackId"/>
+      <Button layoutX="432.0" layoutY="188.0" mnemonicParsing="false" onAction="#createTrack" text="Create Track" />
+      <TextField fx:id="trackName" layoutX="86.0" layoutY="48.0" promptText="Track Name" />
+      <TextField fx:id="trackCountry" layoutX="86.0" layoutY="105.0" promptText="Track Country" />
+      <TextField fx:id="trackTime" layoutX="86.0" layoutY="163.0" promptText="Track Time" />
+      <TextField fx:id="trackId" layoutX="86.0" layoutY="223.0" promptText="Track id" />
+      <DialogPane contentText="Track is yet to be created" layoutX="95.0" layoutY="281.0" fx:id="dialogtext" />
+      <Button layoutX="134.0" layoutY="334.0" mnemonicParsing="false" text="Discard" onAction="#discard" />
+      <Button layoutX="429.0" layoutY="334.0" mnemonicParsing="false" text="Home" onAction="#goHome" />
    </children>
 </Pane>
