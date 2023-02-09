@@ -57,4 +57,7 @@ public class HomeController {
     public void openDriverScreen(ActionEvent actionEvent){
         openDialog("Drivers","/fxml/DriverScreen.fxml", new DriverScreenController());
     }
+    public void openTrackScreen(ActionEvent actionEvent){
+        openDialog("Tracks","/fxml/TrackScreen.fxml", new TrackScreenController());
+    }
 }
