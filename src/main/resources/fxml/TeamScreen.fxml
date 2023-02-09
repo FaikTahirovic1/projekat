@@ -9,9 +9,9 @@
       <HBox layoutX="189.0" layoutY="246.0" prefHeight="100.0" prefWidth="200.0" />
       <ToolBar layoutX="189.0" layoutY="14.0" prefHeight="40.0" prefWidth="200.0">
         <items>
-          <Button mnemonicParsing="false" text="Home" />
-            <Button mnemonicParsing="false" text="About" />
-            <Button mnemonicParsing="false" text="Close App" />
+          <Button mnemonicParsing="false" text="Home" onAction="#goHome" />
+            <Button mnemonicParsing="false" text="About" onAction="#openAbout"/>
+            <Button mnemonicParsing="false" text="Close App" onAction="#closeApp"/>
         </items>
       </ToolBar>
    </children>
