@@ -19,6 +19,7 @@ import static java.lang.Integer.parseInt;
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 public class CreateTrackController {
+
     private final TrackManager manager = new TrackManager();
     public TextField trackName;
     public TextField trackCountry;
