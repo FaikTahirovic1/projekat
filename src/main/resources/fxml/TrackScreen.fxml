@@ -25,7 +25,7 @@
                   <Insets right="20.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Fans">
+            <Button mnemonicParsing="false" text="Fans" onAction="#searchFans">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
