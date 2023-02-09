@@ -10,6 +10,7 @@ import ba.unsa.etf.rpr.domain.Team;
 import ba.unsa.etf.rpr.domain.Time;
 import ba.unsa.etf.rpr.domain.Track;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,18 +26,18 @@ public class App {
         System.out.println(timovi.get(1).getName());
 
         TrackManager trm = new TrackManager();
+        ArrayList<Track>staze = (ArrayList<Track>) trm.getAll();
         System.out.println(trm.getAll().size());
-        ArrayList<Track> staze = (ArrayList<Track>) trm.getAll();
-        Track staza = new Track();
-        staza.setName("Abu Dhabi GP");
-        staza.setId(6);
-        staza.setCountry("Abu Dhabi");
-        staza.setBestTime(new Time(19112));
+        DriverManager driver = new DriverManager();
+        ArrayList<Driver> vozaci = (ArrayList<Driver>) driver.getAll();
+        Driver vozac = new Driver("Lance Stroll", timovi.get(timovi.size()-1), staze.get(staze.size()-1),9,22);
+        driver.add(vozac);
+        System.out.println(vozaci.get(4));
 
-        trm.add(staza);
-
-
-
+        Team Tim = new Team(4, "Red Bull","Austria",vozaci.get(4),vozaci.get(vozaci.size()-1));
+        //Team.add(Tim);
+        System.out.println(vozaci.get(vozaci.size()-1).getId());
+        //System.out.println(timovi.get(timovi.size()-2));
 
     }
 }

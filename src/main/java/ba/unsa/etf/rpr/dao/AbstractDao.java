@@ -126,7 +126,6 @@ public AbstractDao(String tableName) {
     }
     private String prepareUpdateParts(Map<String, Object> row){
         StringBuilder columns = new StringBuilder();
-
         int counter = 0;
         for (Map.Entry<String, Object> entry: row.entrySet()) {
             counter++;
@@ -139,6 +138,7 @@ public AbstractDao(String tableName) {
         return columns.toString();
     }
     private Map.Entry<String, String> prepareInsertParts(Map<String, Object> row){
+
         StringBuilder columns = new StringBuilder();
         StringBuilder questions = new StringBuilder();
 
@@ -157,6 +157,7 @@ public AbstractDao(String tableName) {
     }
     public T add(T item) throws F1Exception{
         Map<String, Object> row = object2row(item);
+        //System.out.println("proslo");
         Map.Entry<String, String> columns = prepareInsertParts(row);
 
         StringBuilder builder = new StringBuilder();
@@ -165,6 +166,7 @@ public AbstractDao(String tableName) {
         builder.append("VALUES (").append(columns.getValue()).append(")");
 
         try{
+
             PreparedStatement stmt = getConnection().prepareStatement(builder.toString(), Statement.RETURN_GENERATED_KEYS);
             // bind params. IMPORTANT treeMap is used to keep columns sorted so params are bind correctly
             int counter = 1;
@@ -174,6 +176,7 @@ public AbstractDao(String tableName) {
                 counter++;
             }
             stmt.executeUpdate();
+            //System.out.println("Prodje ovo");
 
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next(); // we know that there is one key
@@ -187,6 +190,7 @@ public AbstractDao(String tableName) {
         }
     }
     public T update(T item) throws RuntimeException{
+
         Map<String, Object> row = object2row(item);
         String updateColumns = prepareUpdateParts(row);
         StringBuilder builder = new StringBuilder();
