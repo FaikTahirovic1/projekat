@@ -60,4 +60,7 @@ public class HomeController {
     public void openTrackScreen(ActionEvent actionEvent){
         openDialog("Tracks","/fxml/TrackScreen.fxml", new TrackScreenController());
     }
+    public void openTeamScreen(ActionEvent actionEvent){
+        openDialog("Teams","/fxml/TeamScreen.fxml", new TeamScreenController());
+    }
 }
