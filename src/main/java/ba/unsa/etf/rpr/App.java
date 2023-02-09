@@ -21,23 +21,23 @@ import java.util.List;
 public class App {
     public static void main(String[] args) throws F1Exception {
         TeamManager Team = new TeamManager();
-        System.out.println(Team.getAll().size());
+        System.out.println("Timova ima"+Team.getAll().size());
         ArrayList<Team> timovi = (ArrayList<ba.unsa.etf.rpr.domain.Team>) Team.getAll();
-        System.out.println(timovi.get(1).getName());
+
 
         TrackManager trm = new TrackManager();
         ArrayList<Track>staze = (ArrayList<Track>) trm.getAll();
-        System.out.println(trm.getAll().size());
+        System.out.println("Staza ima"+trm.getAll().size());
         DriverManager driver = new DriverManager();
         ArrayList<Driver> vozaci = (ArrayList<Driver>) driver.getAll();
-        Driver vozac = new Driver("Lance Stroll", timovi.get(timovi.size()-1), staze.get(staze.size()-1),9,22);
-        driver.add(vozac);
-        System.out.println(vozaci.get(4));
+        System.out.println(timovi.get(3).getName());
+        Driver vozac = new Driver("Lance Stroll", timovi.get(3), staze.get(staze.size()-1),5,27);
+        //driver.add(vozac);
 
-        Team Tim = new Team(4, "Red Bull","Austria",vozaci.get(4),vozaci.get(vozaci.size()-1));
-        //Team.add(Tim);
-        System.out.println(vozaci.get(vozaci.size()-1).getId());
+
+        System.out.println("vozaca ima "+vozaci.size());
         //System.out.println(timovi.get(timovi.size()-2));
+        //driver.delete(0);
 
     }
 }

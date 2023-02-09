@@ -1,6 +1,8 @@
 package ba.unsa.etf.rpr.controllers;
 
+import ba.unsa.etf.rpr.business.DriverManager;
 import ba.unsa.etf.rpr.business.TeamManager;
+import ba.unsa.etf.rpr.domain.Driver;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +17,7 @@ import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 public class TeamScreenController {
     private final TeamManager tim = new TeamManager();
+    private final DriverManager dm = new DriverManager();
     public void goHome(ActionEvent actionEvent){
         openDialog("Home","/fxml/HomePage.fxml",new HomeController(""));
 

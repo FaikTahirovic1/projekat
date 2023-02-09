@@ -3,16 +3,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <Pane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox layoutX="189.0" layoutY="246.0" prefHeight="100.0" prefWidth="200.0" />
       <ToolBar layoutX="189.0" layoutY="14.0" prefHeight="40.0" prefWidth="200.0">
         <items>
-          <Button mnemonicParsing="false" text="Home" onAction="#goHome" />
-            <Button mnemonicParsing="false" text="About" onAction="#openAbout"/>
-            <Button mnemonicParsing="false" text="Close App" onAction="#closeApp"/>
+          <Button mnemonicParsing="false" onAction="#goHome" text="Home" />
+            <Button mnemonicParsing="false" onAction="#openAbout" text="About" />
+            <Button mnemonicParsing="false" onAction="#closeApp" text="Close App" />
         </items>
       </ToolBar>
+      <Button layoutX="462.0" layoutY="159.0" mnemonicParsing="false" text="Find Team" />
+      <TextField layoutX="240.0" layoutY="159.0" />
+      <DialogPane contentText="Find this Drivers' Team" layoutX="27.0" layoutY="144.0" prefHeight="54.0" prefWidth="191.0" />
+      <TableView layoutX="100.0" layoutY="198.0" prefHeight="200.0" prefWidth="400.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Team Name" />
+            <TableColumn prefWidth="96.19998168945312" text="Team Country" />
+          <TableColumn prefWidth="104.5999755859375" text="Driver 1" />
+            <TableColumn prefWidth="125.0" text="Driver 2" />
+        </columns>
+      </TableView>
    </children>
 </Pane>
