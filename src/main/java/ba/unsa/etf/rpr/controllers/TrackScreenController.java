@@ -71,6 +71,10 @@ public class TrackScreenController {
     }
     public void updateTrack(ActionEvent event) throws F1Exception {
         refreshTracks();
+    }
+    public void searchFans(ActionEvent event){
+
+        openDialog("Track fans","/fxml/TrackFansPage.fxml", new TrackFansController());
 
     }
 }
