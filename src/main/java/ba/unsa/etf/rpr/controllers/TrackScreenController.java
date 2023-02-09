@@ -36,7 +36,18 @@ public class TrackScreenController {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
     }
-    public void searchTrack(ActionEvent event){}
-    public void deleteTrack(ActionEvent event){}
+    public void searchTrack(ActionEvent event){
+
+    }
+    public void deleteTrack(ActionEvent event){
+        try {
+            Track track = trackList.getSelectionModel().getSelectedItem();
+            manager.delete(track.getId());
+            //refreshCategories();
+            trackList.getItems().remove(track); // perf optimization
+        }catch (F1Exception e){
+            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
+        }
+    }
     public void updateTrack(ActionEvent event){}
 }

@@ -4,7 +4,10 @@ import ba.unsa.etf.rpr.Exception.F1Exception;
 import ba.unsa.etf.rpr.domain.Time;
 import ba.unsa.etf.rpr.domain.Track;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -48,6 +51,17 @@ public class TrackDaoSQLImpl extends AbstractDao<Track> implements TrackDao{
     }
     public Track getById(int id) throws F1Exception {
         return executeQueryUnique("SELECT * FROM "+"Track"+" WHERE idTrack = ?", new Object[]{id});
+    }
+    @Override
+    public void delete(int id) throws F1Exception {
+        String sql = "DELETE FROM "+"Track"+" WHERE idTrack = ?";
+        try{
+            PreparedStatement stmt = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            stmt.setObject(1, id);
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            throw new F1Exception(e.getMessage(), e);
+        }
     }
 
 }
