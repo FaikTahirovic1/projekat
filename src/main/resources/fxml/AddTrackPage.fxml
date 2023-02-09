@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="432.0" layoutY="188.0" mnemonicParsing="false" text="Create Track" onAction="#createTrack"/>
+      <TextField layoutX="86.0" layoutY="48.0" promptText="Track Name" fx:id="trackName"/>
+      <TextField layoutX="86.0" layoutY="105.0" promptText="Track Country" fx:id="trackCountry" />
+      <TextField layoutX="86.0" layoutY="163.0" promptText="Track Time" fx:id="tracktime"/>
+      <TextField layoutX="86.0" layoutY="223.0" promptText="Track id" fx:id="trackid"/>
+   </children>
+</Pane>

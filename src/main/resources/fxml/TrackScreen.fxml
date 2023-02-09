@@ -20,7 +20,7 @@
       <Label text="Search track" />
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <Button mnemonicParsing="false" onAction="#searchTrack" text="Search">
+            <Button mnemonicParsing="false" onAction="#createTrack" text="Create">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>

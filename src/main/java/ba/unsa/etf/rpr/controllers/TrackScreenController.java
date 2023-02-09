@@ -6,10 +6,17 @@ import ba.unsa.etf.rpr.domain.Track;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 public class TrackScreenController {
     private final TrackManager manager = new TrackManager();
@@ -36,8 +43,21 @@ public class TrackScreenController {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
     }
-    public void searchTrack(ActionEvent event){
-
+    public void createTrack(ActionEvent event){
+        openDialog("Track","/fxml/AddTrackPage.fxml", new CreateTrackController());
+    }
+    private void openDialog(String title, String file, Object controller){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(file));
+            loader.setController(controller);
+            Stage stage = new Stage();
+            stage.setScene(new Scene((Parent) loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setTitle(title);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+        }catch (Exception e){
+            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
+        }
     }
     public void deleteTrack(ActionEvent event){
         try {
@@ -49,5 +69,7 @@ public class TrackScreenController {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
     }
-    public void updateTrack(ActionEvent event){}
+    public void updateTrack(ActionEvent event){
+
+    }
 }
