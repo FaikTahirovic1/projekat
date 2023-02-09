@@ -25,6 +25,16 @@ public class CreateTrackController {
     public TextField trackTime;
     public TextField trackId;
     public DialogPane dialogtext;
+    private boolean isLetter(char x){
+        if(x >= 'a' && x <= 'z') return true;
+        if(x >= 'A' && x <= 'Z')return  true;
+        return false;
+    }
+    private boolean checkNameFormat(String name){
+        for(int i = 0; i < name.length() ; i++){
+            if(name.charAt(i) != ' ' && !isLetter(name.charAt(i)))return false;
+        }
+    }
 
     public void createTrack(ActionEvent event) throws F1Exception {
         Track staza = new Track();
