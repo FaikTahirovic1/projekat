@@ -31,6 +31,7 @@ public class CreateTrackController {
         return false;
     }
     private boolean checkNameFormat(String name){
+        if(name.length() == 0)return false;
         for(int i = 0; i < name.length() ; i++){
             if(name.charAt(i) != ' ' && !isLetter(name.charAt(i)))return false;
         }
@@ -42,12 +43,21 @@ public class CreateTrackController {
     }
 
     private boolean checkNumberFormat(String n){
+        if(n.length() == 0) return false;
         for(int i = 0; i < n.length(); i++)if(!isDigit(n.charAt(i)))return false;
         return true;
     }
 
     public void createTrack(ActionEvent event) throws F1Exception {
         Track staza = new Track();
+        if(!checkNumberFormat(trackId.getText()) || trackId.getText()==null){
+            dialogtext.setContentText("Incorrect id!");
+            return;
+        }
+        if(!checkNumberFormat(trackTime.getText()) || trackTime.getText()==null){
+            dialogtext.setContentText("Incorrect time!");
+            return;
+        }
         Time vr = new Time(parseInt(trackTime.getText()));
         staza.setBestTime(vr);
         staza.setId(parseInt(trackId.getText()));
