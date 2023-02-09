@@ -41,10 +41,12 @@ public class TrackFansController {
             if(staze.get(i).getName().equals(ime))id = staze.get(i).getId();
         }
         ArrayList<Driver> vozaci = (ArrayList<Driver>) driver.getAll();
-        ArrayList<String>imena;
+        ArrayList<String>imena = new ArrayList<>();
         for(int i = 0; i < vozaci.size(); i++){
-            if(vozaci.get(i).getFavouriteTrack().getId() == id)System.out.println(vozaci.get(i));
+            if(vozaci.get(i).getFavouriteTrack().getId() == id) imena.add(vozaci.get(i).getName());
         }
+        listOfDrivers.setItems(FXCollections.observableArrayList(imena));
+
     }
     private void refreshDrivers() throws F1Exception{
         try {
