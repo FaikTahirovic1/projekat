@@ -8,7 +8,7 @@
       <Button layoutX="432.0" layoutY="188.0" mnemonicParsing="false" text="Create Track" onAction="#createTrack"/>
       <TextField layoutX="86.0" layoutY="48.0" promptText="Track Name" fx:id="trackName"/>
       <TextField layoutX="86.0" layoutY="105.0" promptText="Track Country" fx:id="trackCountry" />
-      <TextField layoutX="86.0" layoutY="163.0" promptText="Track Time" fx:id="tracktime"/>
-      <TextField layoutX="86.0" layoutY="223.0" promptText="Track id" fx:id="trackid"/>
+      <TextField layoutX="86.0" layoutY="163.0" promptText="Track Time" fx:id="trackTime"/>
+      <TextField layoutX="86.0" layoutY="223.0" promptText="Track id" fx:id="trackId"/>
    </children>
 </Pane>
