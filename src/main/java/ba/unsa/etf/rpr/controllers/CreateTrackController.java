@@ -36,6 +36,15 @@ public class CreateTrackController {
         }
         return true;
     }
+    private boolean isDigit(char x){
+        if(x >= '0' && x <= '9') return true;
+        return false;
+    }
+
+    private boolean checkNumberFormat(String n){
+        for(int i = 0; i < n.length(); i++)if(!isDigit(n.charAt(i)))return false;
+        return true;
+    }
 
     public void createTrack(ActionEvent event) throws F1Exception {
         Track staza = new Track();
