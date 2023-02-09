@@ -34,6 +34,7 @@ public class CreateTrackController {
         for(int i = 0; i < name.length() ; i++){
             if(name.charAt(i) != ' ' && !isLetter(name.charAt(i)))return false;
         }
+        return true;
     }
 
     public void createTrack(ActionEvent event) throws F1Exception {
@@ -43,8 +44,17 @@ public class CreateTrackController {
         staza.setId(parseInt(trackId.getText()));
         staza.setCountry(trackCountry.getText());
         staza.setName(trackName.getText());
+        if(!checkNameFormat(trackName.getText())){
+            dialogtext.setContentText("Incorrect name!");
+            return;
+        }
+        if(!checkNameFormat(trackCountry.getText())){
+            dialogtext.setContentText("Incorrect country!");
+            return;
+        }
+
         manager.add(staza);
-        dialogtext.setContentText("Staza je kreirana!");
+        dialogtext.setContentText("Track created!");
 
     }
     public void discard(ActionEvent event){
