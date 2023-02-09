@@ -17,7 +17,7 @@
    <children>
       <ListView fx:id="trackList" minHeight="300.0" prefHeight="300.0" prefWidth="297.0" GridPane.columnSpan="2" GridPane.rowIndex="2" />
       <TextField fx:id="trackName" GridPane.columnIndex="1" />
-      <Label text="Search track" />
+      <Label text="Select track" />
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
             <Button mnemonicParsing="false" onAction="#createTrack" text="Create">

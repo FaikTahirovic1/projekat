@@ -45,6 +45,9 @@ public class TrackFansController {
         for(int i = 0; i < vozaci.size(); i++){
             if(vozaci.get(i).getFavouriteTrack().getId() == id) imena.add(vozaci.get(i).getName());
         }
+        if(imena.size() == 0){
+            imena.add("No driver considers this track favourite");
+        }
         listOfDrivers.setItems(FXCollections.observableArrayList(imena));
 
     }
@@ -54,7 +57,6 @@ public class TrackFansController {
             ArrayList<Driver> vozaci = (ArrayList<Driver>) driver.getAll();
             for(int i = 0; i < vozaci.size(); i++) {
                 driverNames.add(vozaci.get(i).getName());
-                System.out.println(vozaci.get(i).getName());
             }
             listOfDrivers.setItems(FXCollections.observableArrayList(driverNames));
         } catch (F1Exception e) {
