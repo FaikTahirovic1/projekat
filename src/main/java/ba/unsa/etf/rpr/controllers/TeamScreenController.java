@@ -15,6 +15,7 @@ import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 public class TeamScreenController {
     private final TeamManager tim = new TeamManager();
     public void goHome(ActionEvent actionEvent){
+        openDialog("Home","/fxml/HomePage.fxml",new HomeController(""));
 
     }
     public void closeApp(ActionEvent actionEvent){
