@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.TeamManager;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,6 +20,8 @@ public class TeamScreenController {
 
     }
     public void closeApp(ActionEvent actionEvent){
+        Platform.exit();
+        System.exit(0);
 
     }
     public void openAbout(ActionEvent actionEvent){
