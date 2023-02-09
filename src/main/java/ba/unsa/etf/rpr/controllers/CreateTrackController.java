@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -23,6 +24,7 @@ public class CreateTrackController {
     public TextField trackCountry;
     public TextField trackTime;
     public TextField trackId;
+    public DialogPane dialogtext;
 
     public void createTrack(ActionEvent event) throws F1Exception {
         Track staza = new Track();
@@ -32,6 +34,8 @@ public class CreateTrackController {
         staza.setCountry(trackCountry.getText());
         staza.setName(trackName.getText());
         manager.add(staza);
+        dialogtext.setContentText("Staza je kreirana!");
+
     }
     public void discard(ActionEvent event){
         openDialog("Tracks","/fxml/TrackScreen.fxml", new TrackScreenController());
