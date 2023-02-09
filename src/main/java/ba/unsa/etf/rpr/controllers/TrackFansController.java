@@ -8,15 +8,21 @@ import ba.unsa.etf.rpr.domain.Track;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TrackFansController {
     private final DriverManager driver= new DriverManager();
     private final TrackManager track = new TrackManager();
     @FXML
     private ChoiceBox<String> choiceBox;
+    @FXML
+    private ListView<String>listOfDrivers;
     @FXML
     public void initialize() throws F1Exception {
         ArrayList<Track> staze = (ArrayList<Track>) track.getAll();
@@ -25,6 +31,7 @@ public class TrackFansController {
             stazeString[i] = staze.get(i).toString();
         }
         choiceBox.getItems().addAll(stazeString);
+        refreshDrivers();
     }
     public void searchDrivers(ActionEvent actionEvent) throws F1Exception {
         String ime = choiceBox.getValue();
@@ -37,6 +44,19 @@ public class TrackFansController {
         ArrayList<String>imena;
         for(int i = 0; i < vozaci.size(); i++){
             if(vozaci.get(i).getFavouriteTrack().getId() == id)System.out.println(vozaci.get(i));
+        }
+    }
+    private void refreshDrivers() throws F1Exception{
+        try {
+            ArrayList<String> driverNames = new ArrayList<>();
+            ArrayList<Driver> vozaci = (ArrayList<Driver>) driver.getAll();
+            for(int i = 0; i < vozaci.size(); i++) {
+                driverNames.add(vozaci.get(i).getName());
+                System.out.println(vozaci.get(i).getName());
+            }
+            listOfDrivers.setItems(FXCollections.observableArrayList(driverNames));
+        } catch (F1Exception e) {
+            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
     }
 }

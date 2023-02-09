@@ -6,7 +6,7 @@
 
 <Pane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ListView layoutX="200.0" layoutY="200.0" prefHeight="200.0" prefWidth="200.0" />
+      <ListView layoutX="200.0" layoutY="200.0" prefHeight="200.0" prefWidth="200.0" fx:id="listOfDrivers"/>
       <DialogPane contentText="Select the track you want to look up" layoutX="120.0" layoutY="65.0">
          <opaqueInsets>
             <Insets />
