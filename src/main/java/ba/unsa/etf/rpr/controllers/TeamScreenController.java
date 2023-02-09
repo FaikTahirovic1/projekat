@@ -22,6 +22,7 @@ public class TeamScreenController {
 
     }
     public void openAbout(ActionEvent actionEvent){
+        openDialog("About", "/fxml/about.fxml", null);
 
     }
     private void openDialog(String title, String file, Object controller){
