@@ -119,5 +119,17 @@ public class DriverScreenController {
         Platform.exit();
         System.exit(0);
     }
+    public void deleteDriver(ActionEvent actionEvent) throws F1Exception {
+        Driver d = new Driver();
+        d = findByName(searchDrivers.getText());
+        manager.delete(d.getId());
+
+    }
+    private Driver findByName(String name) throws F1Exception {
+        for(int i = 0; i < manager.getAll().size(); i++){
+            if(manager.getAll().get(i).getName().equals(name))return manager.getAll().get(i);
+        }
+        return null;
+    }
 
 }
