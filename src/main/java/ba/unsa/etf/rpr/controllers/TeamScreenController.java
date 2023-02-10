@@ -52,6 +52,9 @@ public class TeamScreenController {
         openDialog("About", "/fxml/about.fxml", null);
 
     }
+    public void addNewTeam(ActionEvent actionEvent){
+
+    }
     private void openDialog(String title, String file, Object controller){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(file));

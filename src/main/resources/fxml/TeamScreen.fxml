@@ -21,6 +21,7 @@
             <TableColumn fx:id="teamCountry" minWidth="0.0" prefWidth="187.4000244140625" text="Team Country" />
         </columns>
       </TableView>
-      <DialogPane fx:id ="dialogP" contentText="Number of Teams" layoutX="500.0" layoutY="271.0" prefHeight="78.0" prefWidth="86.0" />
+      <DialogPane fx:id="dialogP" contentText="Number of Teams" layoutX="500.0" layoutY="271.0" prefHeight="78.0" prefWidth="99.0" />
+      <Button layoutX="243.0" layoutY="91.0" mnemonicParsing="false" text="Add new team" onAction="#addNewTeam"/>
    </children>
 </Pane>
