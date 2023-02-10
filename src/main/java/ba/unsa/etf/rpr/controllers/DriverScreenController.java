@@ -129,6 +129,8 @@ public class DriverScreenController {
 
     }
     public void createDriver(ActionEvent actionEvent){
+        openDialog("Home","/fxml/createDriverScreen.fxml",new CreateDriverController());
+
 
     }
     private Driver findByName(String name) throws F1Exception {
