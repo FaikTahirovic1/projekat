@@ -30,13 +30,15 @@ public class TeamScreenController {
     @FXML
     public TextField searchTeam;
     @FXML
-    public TableColumn<SpecialKindOfTeam, String> teamName;
+    public TableColumn<Team, String> teamName;
     @FXML
-    public TableColumn<SpecialKindOfTeam, String> teamCountry;
+    public TableColumn<Team, String> teamCountry;
     @FXML
+    public DialogPane dialogP;
+    /*@FXML
     public TableColumn<SpecialKindOfTeam, Driver> driver1;
     @FXML
-    public TableColumn<SpecialKindOfTeam, Driver> driver2;
+    public TableColumn<SpecialKindOfTeam, Driver> driver2;*/
     public void goHome(ActionEvent actionEvent){
         openDialog("Home","/fxml/HomePage.fxml",new HomeController(""));
 
@@ -63,12 +65,14 @@ public class TeamScreenController {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
     }
-    public void initialize() {
-        teamName.setCellValueFactory(new PropertyValueFactory<SpecialKindOfTeam, String>("name"));
-        teamCountry.setCellValueFactory(new PropertyValueFactory<SpecialKindOfTeam, String>("country"));
-        driver1.setCellValueFactory(new PropertyValueFactory<SpecialKindOfTeam, Driver>("d1"));
-        driver2.setCellValueFactory(new PropertyValueFactory<SpecialKindOfTeam, Driver>("d2"));
+    public void initialize() throws F1Exception {
+        teamName.setCellValueFactory(new PropertyValueFactory<Team, String>("name"));
+        teamCountry.setCellValueFactory(new PropertyValueFactory<Team, String>("country"));
+        //driver1.setCellValueFactory(new PropertyValueFactory<SpecialKindOfTeam, Driver>("d1"));
+        //driver2.setCellValueFactory(new PropertyValueFactory<SpecialKindOfTeam, Driver>("d2"));
         refreshTeams();
+        String s = "Number of Teams: " + tim.getAll().size();
+        dialogP.setContentText(s);
     }
     private class SpecialKindOfTeam{
         private String name;

@@ -13,15 +13,14 @@
         </items>
       </ToolBar>
       <Button layoutX="462.0" layoutY="159.0" mnemonicParsing="false" text="Find Team" />
-      <TextField layoutX="240.0" layoutY="159.0" fx:id="searchTeam"/>
+      <TextField fx:id="searchTeam" layoutX="240.0" layoutY="159.0" />
       <DialogPane contentText="Find this Drivers' Team" layoutX="27.0" layoutY="144.0" prefHeight="54.0" prefWidth="191.0" />
-      <TableView layoutX="100.0" layoutY="198.0" prefHeight="200.0" prefWidth="400.0" fx:id="teamTable">
+      <TableView fx:id="teamTable" layoutX="100.0" layoutY="198.0" prefHeight="200.0" prefWidth="400.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Team Name" fx:id="teamName" />
-            <TableColumn prefWidth="96.19998168945312" text="Team Country" fx:id="teamCountry"/>
-          <TableColumn prefWidth="104.5999755859375" text="Driver 1" fx:id="driver1"/>
-            <TableColumn prefWidth="125.0" text="Driver 2" fx:id="driver2" />
+          <TableColumn fx:id="teamName" prefWidth="204.59998321533203" text="Team Name" />
+            <TableColumn fx:id="teamCountry" minWidth="0.0" prefWidth="187.4000244140625" text="Team Country" />
         </columns>
       </TableView>
+      <DialogPane fx:id ="dialogP" contentText="Number of Teams" layoutX="500.0" layoutY="271.0" prefHeight="78.0" prefWidth="86.0" />
    </children>
 </Pane>
