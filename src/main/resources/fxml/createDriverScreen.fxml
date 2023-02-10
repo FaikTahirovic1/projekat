@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+            <TextField layoutX="20.0" promptText="Driver name" />
+            <ChoiceBox layoutX="20.0" layoutY="100.0" prefWidth="150.0" />
+            <TextField layoutX="20.0" layoutY="50.0" promptText="id" />
+            <ChoiceBox layoutX="20.0" layoutY="150.0" prefWidth="150.0" />
+         </children>
+      </Pane>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button mnemonicParsing="false" text="Back">
+               <HBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+         <children>
+            <Button mnemonicParsing="false" text="Create">
+               <VBox.margin>
+                  <Insets top="200.0" />
+               </VBox.margin>
+            </Button>
+         </children></VBox>
+      <DialogPane contentText="Create your driver" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+   </children>
+</GridPane>

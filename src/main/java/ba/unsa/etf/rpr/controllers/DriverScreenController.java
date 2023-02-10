@@ -125,6 +125,12 @@ public class DriverScreenController {
         manager.delete(d.getId());
 
     }
+    public void editDriver(ActionEvent actionEvent){
+
+    }
+    public void createDriver(ActionEvent actionEvent){
+
+    }
     private Driver findByName(String name) throws F1Exception {
         for(int i = 0; i < manager.getAll().size(); i++){
             if(manager.getAll().get(i).getName().equals(name))return manager.getAll().get(i);
