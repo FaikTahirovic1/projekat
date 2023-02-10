@@ -8,6 +8,7 @@ import ba.unsa.etf.rpr.domain.Team;
 import ba.unsa.etf.rpr.domain.Track;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -54,6 +55,15 @@ public class TeamScreenController {
     }
     public void addNewTeam(ActionEvent actionEvent){
 
+    }
+    public void findHisTeam(ActionEvent actionEvent) throws F1Exception {
+        String driverName = searchTeam.getText();
+        ArrayList<Team>hisTeam = new ArrayList<>();
+        ArrayList<Driver> drivers = (ArrayList<Driver>) dm.getAll();
+        for(int i = 0; i < drivers.size(); i++){
+            if(driverName.equals(drivers.get(i).getName()))hisTeam.add(drivers.get(i).getTeam());
+        }
+        teamTable.setItems(FXCollections.observableArrayList(hisTeam));
     }
     private void openDialog(String title, String file, Object controller){
         try {
