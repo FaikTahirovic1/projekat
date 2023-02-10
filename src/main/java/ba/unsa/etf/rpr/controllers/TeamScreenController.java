@@ -18,6 +18,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.util.ArrayList;
+
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 public class TeamScreenController {
@@ -28,13 +30,13 @@ public class TeamScreenController {
     @FXML
     public TextField searchTeam;
     @FXML
-    public TableColumn<Team, String> teamName;
+    public TableColumn<SpecialKindOfTeam, String> teamName;
     @FXML
-    public TableColumn<Team, String> teamCountry;
-    /*@FXML
-    public TableColumn<Team, String> driver1;
+    public TableColumn<SpecialKindOfTeam, String> teamCountry;
     @FXML
-    public TableColumn<Team, String> driver2;*/
+    public TableColumn<SpecialKindOfTeam, Driver> driver1;
+    @FXML
+    public TableColumn<SpecialKindOfTeam, Driver> driver2;
     public void goHome(ActionEvent actionEvent){
         openDialog("Home","/fxml/HomePage.fxml",new HomeController(""));
 
@@ -62,11 +64,67 @@ public class TeamScreenController {
         }
     }
     public void initialize() {
-        teamName.setCellValueFactory(new PropertyValueFactory<Team, String>("name"));
-        teamCountry.setCellValueFactory(new PropertyValueFactory<Team, String>("country"));
-        //trackColumn.setCellValueFactory(new PropertyValueFactory<Driver, Track>("favouriteTrack"));
-        //teamColumn.setCellValueFactory(new PropertyValueFactory<Driver, Team>("team"));
+        teamName.setCellValueFactory(new PropertyValueFactory<SpecialKindOfTeam, String>("name"));
+        teamCountry.setCellValueFactory(new PropertyValueFactory<SpecialKindOfTeam, String>("country"));
+        driver1.setCellValueFactory(new PropertyValueFactory<SpecialKindOfTeam, Driver>("d1"));
+        driver2.setCellValueFactory(new PropertyValueFactory<SpecialKindOfTeam, Driver>("d2"));
         refreshTeams();
+    }
+    private class SpecialKindOfTeam{
+        private String name;
+        private String country;
+        private Driver d1;
+        private Driver d2;
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public void setCountry(String country) {
+            this.country = country;
+        }
+
+        public void setD1(Driver d1) {
+            this.d1 = d1;
+        }
+
+        public void setD2(Driver d2) {
+            this.d2 = d2;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getCountry() {
+            return country;
+        }
+
+        public Driver getD1() {
+            return d1;
+        }
+
+        public Driver getD2() {
+            return d2;
+        }
+
+        public SpecialKindOfTeam(Team team) throws F1Exception {
+            this.name=team.getName();
+            this.country=team.getCountry();
+
+            ArrayList<Driver> vozaci = (ArrayList<Driver>)dm.getAll();
+            int x = 0;
+            for(int i = 0; i< dm.getAll().size(); i++){
+                if(vozaci.get(i).getTeam().getId() == team.getId()){
+                    if( x == 1) d2 = vozaci.get(i);
+                    if(x == 0){
+                        d1 = vozaci.get(i);
+                        x = x + 1;
+                    }
+                }
+            }
+
+        }
     }
     private void refreshTeams(){
         try {
