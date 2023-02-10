@@ -8,9 +8,9 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField layoutX="203.0" layoutY="158.0" promptText="Team id" />
-            <TextField layoutX="203.0" layoutY="218.0" promptText="Team Name" />
-            <TextField layoutX="203.0" layoutY="285.0" promptText="Team country" />
+            <TextField layoutX="203.0" layoutY="158.0" promptText="Team id" fx:id="teamid"/>
+            <TextField layoutX="203.0" layoutY="218.0" promptText="Team Name" fx:id="teamname"/>
+            <TextField layoutX="203.0" layoutY="285.0" promptText="Team country" fx:id="teamcountry"/>
             <VBox layoutX="466.0" layoutY="118.0" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <ChoiceBox prefWidth="150.0" />
@@ -32,6 +32,7 @@
                   <Button mnemonicParsing="false" text="Close App" />
               </items>
             </ToolBar>
+            <DialogPane contentText="Here you can add or edit existing team" layoutX="160.0" layoutY="91.0" prefHeight="54.0" prefWidth="235.0" />
          </children>
       </Pane>
    </center>
