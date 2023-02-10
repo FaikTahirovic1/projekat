@@ -85,13 +85,17 @@ public class AddNewTeamController {
     public void goToTeamScreen(ActionEvent actionEvent){
         openDialog("Teams","/fxml/TeamScreen.fxml", new TeamScreenController());
     }
-    public void editThisTeam(ActionEvent actionEvent) throws F1Exception {
-        tm.delete(Integer.parseInt(teamid.getText()));
-        Integer i = Integer.parseInt(teamid.getText());
-        String n = teamname.getText();
-        String c = teamcountry.getText();
-        Team tim = new Team(i,n,c);
-        tm.add(tim);
+    public void editThisTeam(ActionEvent actionEvent){
+        try {
+            tm.delete(Integer.parseInt(teamid.getText()));
+            Integer i = Integer.parseInt(teamid.getText());
+            String n = teamname.getText();
+            String c = teamcountry.getText();
+            Team tim = new Team(i, n, c);
+            tm.add(tim);
+        }catch(F1Exception e){
+            new Alert(Alert.AlertType.NONE, "Cannot edit this team as drivers drive for it", ButtonType.OK).show();
+        }
 
     }
     public void addThisTeam(ActionEvent actionEvent) throws F1Exception {
