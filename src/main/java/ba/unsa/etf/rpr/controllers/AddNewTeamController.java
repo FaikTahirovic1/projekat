@@ -43,6 +43,22 @@ public class AddNewTeamController {
         //System.out.println(teamString[1]);
         cb.getItems().addAll(teamString);
         //System.out.println("rad");
+        cb.getSelectionModel().selectedItemProperty().addListener((obs, o, n)-> {
+                    if (n != null) {
+                        //teamid.setText(n.getid());
+                        Team ekipa = new Team();
+                        try {
+                            ekipa = findThisTeam(n);
+                        } catch (F1Exception e) {
+                            throw new RuntimeException(e);
+                        }
+                        teamid.setText(String.valueOf(ekipa.getId()));
+                        teamcountry.setText(ekipa.getCountry());
+                        teamname.setText(ekipa.getName());
+
+
+                    }
+                });
         refreshTeams();
     }
 
@@ -98,5 +114,11 @@ public class AddNewTeamController {
         } catch (F1Exception e) {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
+    }
+    private Team findThisTeam(String name) throws F1Exception {
+        for(int i = 0; i < tm.getAll().size(); i++){
+            if(name.equals(tm.getAll().get(i).getName()))return tm.getAll().get(i);
+        }
+        return null;
     }
 }
