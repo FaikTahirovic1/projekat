@@ -1,13 +1,17 @@
 package ba.unsa.etf.rpr.controllers;
 
+import ba.unsa.etf.rpr.Exception.F1Exception;
 import ba.unsa.etf.rpr.business.TeamManager;
+import ba.unsa.etf.rpr.domain.Team;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -15,6 +19,12 @@ import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 public class AddNewTeamController {
     TeamManager tm = new TeamManager();
+    @FXML
+    private TextField teamid;
+    @FXML
+    private TextField teamname;
+    @FXML
+    private TextField teamcountry;
 
     private void openDialog(String title, String file, Object controller){
         try {
@@ -38,5 +48,16 @@ public class AddNewTeamController {
     }
     public void goToTeamScreen(ActionEvent actionEvent){
         openDialog("Teams","/fxml/TeamScreen.fxml", new TeamScreenController());
+    }
+    public void editThisTeam(ActionEvent actionEvent){
+
+    }
+    public void addThisTeam(ActionEvent actionEvent) throws F1Exception {
+        Integer i = Integer.parseInt(teamid.getText());
+        String n = teamname.getText();
+        String c = teamcountry.getText();
+        Team tim = new Team(i,n,c);
+        tm.add(tim);
+
     }
 }

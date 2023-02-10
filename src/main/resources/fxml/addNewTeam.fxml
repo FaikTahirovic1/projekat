@@ -14,7 +14,7 @@
             <VBox layoutX="466.0" layoutY="118.0" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <ChoiceBox prefWidth="150.0" fx:id="choiceb"/>
-                  <Button mnemonicParsing="false" text="Add Team" textAlignment="CENTER">
+                  <Button mnemonicParsing="false" text="Add Team" textAlignment="CENTER" onAction="#addThisTeam">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -22,7 +22,7 @@
                         <Insets bottom="30.0" top="30.0" />
                      </VBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="Edit this Team" onAction="#editThisTEam"/>
+                  <Button mnemonicParsing="false" text="Edit this Team" onAction="#editThisTeam"/>
                </children>
             </VBox>
             <ToolBar layoutX="177.0" layoutY="14.0" prefHeight="40.0" prefWidth="230.0">
