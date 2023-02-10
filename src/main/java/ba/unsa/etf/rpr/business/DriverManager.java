@@ -35,11 +35,8 @@ public class DriverManager {
             throw e;
         }
     }
-    public Driver update(Driver driver) throws F1Exception {
-        Driver d = new Driver(driver.getName(),driver.getTeam(),driver.getFavouriteTrack(),driver.getId(),driver.getAge());
-        delete(driver.getId());
-        add(d);
-        return d;
+    public void update(Driver d) throws F1Exception{
+        DaoFactory.driverDao().update(d);
     }
 
 }
