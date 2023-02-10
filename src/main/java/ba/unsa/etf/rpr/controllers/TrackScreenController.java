@@ -66,7 +66,7 @@ public class TrackScreenController {
             //refreshCategories();
             trackList.getItems().remove(track); // perf optimization
         }catch (F1Exception e){
-            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
+            new Alert(Alert.AlertType.NONE, "Cannot delete this track as drivers consider it its favourite", ButtonType.OK).show();
         }
     }
     public void updateTrack(ActionEvent event) throws F1Exception {
