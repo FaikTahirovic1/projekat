@@ -18,10 +18,11 @@
    <children>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <TextField layoutX="20.0" promptText="Driver name" fx:id="namefield"/>
-            <ChoiceBox layoutX="20.0" layoutY="100.0" prefWidth="150.0" fx:id="teamcb" />
-            <TextField layoutX="20.0" layoutY="50.0" promptText="id" fx:id="idfield"/>
-            <ChoiceBox layoutX="20.0" layoutY="150.0" prefWidth="150.0" fx:id="trackcb"/>
+            <TextField fx:id="namefield" layoutX="20.0" promptText="Driver name" />
+            <ChoiceBox fx:id="teamcb" layoutX="20.0" layoutY="200.0" prefWidth="150.0" />
+            <TextField fx:id="idfield" layoutX="20.0" layoutY="50.0" promptText="id" />
+            <ChoiceBox fx:id="trackcb" layoutX="20.0" layoutY="150.0" prefWidth="150.0" />
+            <TextField fx:id="agefield" layoutX="20.0" layoutY="100.0" promptText="age" />
          </children>
       </Pane>
       <HBox prefHeight="100.0" prefWidth="200.0">
@@ -35,12 +36,12 @@
       </HBox>
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
          <children>
-            <Button mnemonicParsing="false" text="Create" onAction="#create">
+            <Button mnemonicParsing="false" onAction="#create" text="Create">
                <VBox.margin>
                   <Insets top="200.0" />
                </VBox.margin>
             </Button>
          </children></VBox>
-      <DialogPane contentText="Create your driver" GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="dialogp"/>
+      <DialogPane fx:id="dialogp" contentText="Create your driver" GridPane.columnIndex="1" GridPane.rowIndex="2" />
    </children>
 </GridPane>

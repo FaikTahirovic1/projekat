@@ -4,6 +4,7 @@ import ba.unsa.etf.rpr.Exception.F1Exception;
 import ba.unsa.etf.rpr.business.DriverManager;
 import ba.unsa.etf.rpr.business.TeamManager;
 import ba.unsa.etf.rpr.business.TrackManager;
+import ba.unsa.etf.rpr.domain.Driver;
 import ba.unsa.etf.rpr.domain.Team;
 import ba.unsa.etf.rpr.domain.Track;
 import javafx.collections.FXCollections;
@@ -33,6 +34,8 @@ public class CreateDriverController {
     public TextField namefield;
     @FXML
     public TextField idfield;
+    @FXML
+    public TextField agefield;
 
     @FXML
     public void initialize() throws F1Exception {
@@ -75,8 +78,28 @@ public class CreateDriverController {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
     }
-    public void create(ActionEvent actionEvent){
+    public void create(ActionEvent actionEvent) throws F1Exception {
+        Driver d = new Driver();
+        d.setName(namefield.getText());
+        d.setId(Integer.parseInt(idfield.getText()));
+        d.setTeam(findTeamByName(teamcb.getValue()));
+        d.setFavouriteTrack(findTrackByName(trackcb.getValue()));
+        d.setAge(Integer.parseInt(agefield.getText()));
+        drivermanager.add(d);
 
+    }
+
+    private Team findTeamByName(String name) throws F1Exception {
+        for(int i = 0; i < teammanager.getAll().size(); i++){
+            if(teammanager.getAll().get(i).getName().equals(name))return teammanager.getAll().get(i);
+        }
+        return null;
+    }
+    private Track findTrackByName(String name) throws F1Exception {
+        for(int i = 0; i < trackmanager.getAll().size(); i++){
+            if(trackmanager.getAll().get(i).getName().equals(name))return trackmanager.getAll().get(i);
+        }
+        return null;
     }
 
 
