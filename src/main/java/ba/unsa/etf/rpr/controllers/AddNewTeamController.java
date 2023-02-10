@@ -2,8 +2,11 @@ package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.Exception.F1Exception;
 import ba.unsa.etf.rpr.business.TeamManager;
+import ba.unsa.etf.rpr.domain.Driver;
 import ba.unsa.etf.rpr.domain.Team;
+import ba.unsa.etf.rpr.domain.Track;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,9 +14,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+import java.util.ArrayList;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
@@ -25,6 +31,20 @@ public class AddNewTeamController {
     private TextField teamname;
     @FXML
     private TextField teamcountry;
+    @FXML
+    private ChoiceBox<String> cb;
+    @FXML
+    public void initialize() throws F1Exception {
+        ArrayList<Team> timovi = (ArrayList<Team>) tm.getAll();
+        String teamString[] = new String[timovi.size()];
+        for(int i = 0; i<timovi.size(); i++){
+            teamString[i] = timovi.get(i).toString();
+        }
+        //System.out.println(teamString[1]);
+        cb.getItems().addAll(teamString);
+        //System.out.println("rad");
+        refreshTeams();
+    }
 
     private void openDialog(String title, String file, Object controller){
         try {
@@ -49,7 +69,15 @@ public class AddNewTeamController {
     public void goToTeamScreen(ActionEvent actionEvent){
         openDialog("Teams","/fxml/TeamScreen.fxml", new TeamScreenController());
     }
-    public void editThisTeam(ActionEvent actionEvent){
+    public void editThisTeam(ActionEvent actionEvent) throws F1Exception {
+        String teamnamecb = cb.getValue();
+        for(int i = 0; i < tm.getAll().size(); i++){
+            if(tm.getAll().get(i).getName().equals(teamnamecb)){
+                teamname.setText(tm.getAll().get(i).getName());
+                teamcountry.setText(tm.getAll().get(i).getCountry());
+                teamid.setText(String.valueOf(tm.getAll().get(i).getId()));
+            }
+        }
 
     }
     public void addThisTeam(ActionEvent actionEvent) throws F1Exception {
@@ -58,6 +86,17 @@ public class AddNewTeamController {
         String c = teamcountry.getText();
         Team tim = new Team(i,n,c);
         tm.add(tim);
-
+    }
+    private void refreshTeams() throws F1Exception{
+        try {
+            ArrayList<String> teamNames = new ArrayList<>();
+            ArrayList<Team> timovi = (ArrayList<Team>) tm.getAll();
+            for(int i = 0; i < timovi.size(); i++) {
+                teamNames.add(timovi.get(i).getName());
+            }
+            cb.setItems(FXCollections.observableArrayList(teamNames));
+        } catch (F1Exception e) {
+            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
+        }
     }
 }
