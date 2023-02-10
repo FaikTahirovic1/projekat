@@ -33,4 +33,7 @@ public class AddNewTeamController {
         Platform.exit();
         System.exit(0);
     }
+    public  void goHome(ActionEvent actionEvent){
+        openDialog("Home","/fxml/HomePage.fxml",new HomeController(""));
+    }
 }
