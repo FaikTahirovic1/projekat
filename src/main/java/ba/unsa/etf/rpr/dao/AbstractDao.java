@@ -210,6 +210,7 @@ public AbstractDao(String tableName) {
             }
             stmt.setObject(counter, item.getId());
             stmt.executeUpdate();
+            //System.out.println();
             return item;
         }catch (SQLException e){
             throw new RuntimeException(e.getMessage(), e);
