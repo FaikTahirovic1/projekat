@@ -18,9 +18,9 @@
    <children>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <TextField layoutX="20.0" promptText="Driver name" fx:id="drivernamefield"/>
+            <TextField layoutX="20.0" promptText="Driver name" fx:id="namefield"/>
             <ChoiceBox layoutX="20.0" layoutY="100.0" prefWidth="150.0" fx:id="teamcb" />
-            <TextField layoutX="20.0" layoutY="50.0" promptText="id" fx:id="driveridfield"/>
+            <TextField layoutX="20.0" layoutY="50.0" promptText="id" fx:id="idfield"/>
             <ChoiceBox layoutX="20.0" layoutY="150.0" prefWidth="150.0" fx:id="trackcb"/>
          </children>
       </Pane>
