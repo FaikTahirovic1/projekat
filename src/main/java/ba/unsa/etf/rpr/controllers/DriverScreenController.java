@@ -111,5 +111,8 @@ public class DriverScreenController {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
     }
+    public void goHome(ActionEvent actionEvent){
+        openDialog("Home","/fxml/HomePage.fxml",new HomeController(""));
+    }
 
 }
