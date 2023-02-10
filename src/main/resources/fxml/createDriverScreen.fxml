@@ -27,7 +27,7 @@
       </Pane>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" text="Back">
+            <Button mnemonicParsing="false" text="Back" onAction="#back">
                <HBox.margin>
                   <Insets left="10.0" top="10.0" />
                </HBox.margin>
