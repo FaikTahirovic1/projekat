@@ -7,7 +7,7 @@
 
 <Pane fx:id="driversScreen" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: GHOSTWHITE;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text layoutX="263.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Drivers" textAlignment="CENTER" underline="true">
+      <Text layoutX="263.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Drivers" textAlignment="CENTER" underline="true">
          <font>
             <Font size="24.0" />
          </font>
@@ -26,7 +26,16 @@
               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
           </padding>
       </TableView>
-      <Button layoutX="163.0" layoutY="97.0" mnemonicParsing="false" onAction="#showAllDrivers" text="Show all" />
-      <Button layoutX="379.0" layoutY="155.0" mnemonicParsing="false" text="Sort by age" onAction="#sortByAge" />
+      <Button layoutX="269.0" layoutY="105.0" mnemonicParsing="false" onAction="#showAllDrivers" text="Show all" />
+      <Button layoutX="376.0" layoutY="105.0" mnemonicParsing="false" onAction="#sortByAge" text="Sort by age" />
+      <ToolBar layoutX="118.0" layoutY="14.0" prefHeight="40.0" prefWidth="302.0">
+        <items>
+          <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="50.0" text="Home" />
+            <Button mnemonicParsing="false" prefWidth="80.0" text="Edit Driver" />
+            <Button mnemonicParsing="false" text="Create Driver" />
+            <Button mnemonicParsing="false" text="Close All" />
+        </items>
+      </ToolBar>
+      <Button layoutX="377.0" layoutY="155.0" mnemonicParsing="false" text="Delete Driver" />
    </children>
 </Pane>
