@@ -54,6 +54,7 @@ public class TeamScreenController {
 
     }
     public void addNewTeam(ActionEvent actionEvent){
+        openDialog("Add new team", "/fxml/addNewTeam.fxml", new AddNewTeamController());
 
     }
     public void findHisTeam(ActionEvent actionEvent) throws F1Exception {
