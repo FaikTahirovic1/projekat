@@ -40,9 +40,7 @@ public class AddNewTeamController {
         for(int i = 0; i<timovi.size(); i++){
             teamString[i] = timovi.get(i).toString();
         }
-        //System.out.println(teamString[1]);
         cb.getItems().addAll(teamString);
-        //System.out.println("rad");
         cb.getSelectionModel().selectedItemProperty().addListener((obs, o, n)-> {
                     if (n != null) {
                         //teamid.setText(n.getid());

@@ -129,7 +129,7 @@ public class DriverScreenController {
 
     }
     public void createDriver(ActionEvent actionEvent){
-        openDialog("Home","/fxml/createDriverScreen.fxml",new CreateDriverController());
+        openDialog("Create driver","/fxml/createDriverScreen.fxml",new CreateDriverController());
 
 
     }
