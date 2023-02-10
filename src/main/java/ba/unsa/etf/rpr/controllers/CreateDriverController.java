@@ -43,6 +43,13 @@ public class CreateDriverController {
         }
         teamcb.getItems().addAll(teamString);
         refreshTeams();
+
+        ArrayList<Track> tracks = (ArrayList<Track>) trackmanager.getAll();
+        String trackString[] = new String[tracks.size()];
+        for(int i = 0; i<tracks.size(); i++){
+            trackString[i] = tracks.get(i).toString();
+        }
+        trackcb.getItems().addAll(trackString);
     }
     private void refreshTeams() throws F1Exception{
         try {
