@@ -36,4 +36,7 @@ public class AddNewTeamController {
     public  void goHome(ActionEvent actionEvent){
         openDialog("Home","/fxml/HomePage.fxml",new HomeController(""));
     }
+    public void goToTeamScreen(ActionEvent actionEvent){
+        openDialog("Teams","/fxml/TeamScreen.fxml", new TeamScreenController());
+    }
 }
