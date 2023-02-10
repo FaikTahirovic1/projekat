@@ -73,6 +73,17 @@ public class TeamDaoSQLImpl extends AbstractDao<Team> implements  TeamDao{
 
         return executeQuery("SELECT * FROM "+ "Team", null);
     }
+    @Override
+    public void delete(int id) throws F1Exception {
+        String sql = "DELETE FROM "+"Team"+" WHERE idTeam = ?";
+        try{
+            PreparedStatement stmt = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            stmt.setObject(1, id);
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            throw new F1Exception(e.getMessage(), e);
+        }
+    }
 
 
 }

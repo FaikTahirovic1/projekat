@@ -86,14 +86,6 @@ public class AddNewTeamController {
         openDialog("Teams","/fxml/TeamScreen.fxml", new TeamScreenController());
     }
     public void editThisTeam(ActionEvent actionEvent) throws F1Exception {
-        String teamnamecb = cb.getValue();
-        for(int i = 0; i < tm.getAll().size(); i++){
-            if(tm.getAll().get(i).getName().equals(teamnamecb)){
-                teamname.setText(tm.getAll().get(i).getName());
-                teamcountry.setText(tm.getAll().get(i).getCountry());
-                teamid.setText(String.valueOf(tm.getAll().get(i).getId()));
-            }
-        }
 
     }
     public void addThisTeam(ActionEvent actionEvent) throws F1Exception {
