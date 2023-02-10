@@ -4,6 +4,7 @@ import ba.unsa.etf.rpr.Exception.F1Exception;
 import ba.unsa.etf.rpr.domain.Driver;
 import ba.unsa.etf.rpr.domain.Team;
 import ba.unsa.etf.rpr.domain.Track;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -113,6 +114,10 @@ public class DriverScreenController {
     }
     public void goHome(ActionEvent actionEvent){
         openDialog("Home","/fxml/HomePage.fxml",new HomeController(""));
+    }
+    public void closeAll(ActionEvent actionEvent){
+        Platform.exit();
+        System.exit(0);
     }
 
 }
