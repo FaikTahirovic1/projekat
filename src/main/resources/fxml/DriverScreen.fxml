@@ -30,12 +30,12 @@
       <Button layoutX="376.0" layoutY="105.0" mnemonicParsing="false" onAction="#sortByAge" text="Sort by age" />
       <ToolBar layoutX="118.0" layoutY="14.0" prefHeight="40.0" prefWidth="302.0">
         <items>
-          <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="50.0" text="Home" />
-            <Button mnemonicParsing="false" prefWidth="80.0" text="Edit Driver" />
-            <Button mnemonicParsing="false" text="Create Driver" />
-            <Button mnemonicParsing="false" text="Close All" />
+          <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="50.0" text="Home" onAction="#goHome"/>
+            <Button mnemonicParsing="false" prefWidth="80.0" text="Edit Driver" onAction="#editDriver"/>
+            <Button mnemonicParsing="false" text="Create Driver" onAction="#createDriver"/>
+            <Button mnemonicParsing="false" text="Close All" onAction="#closeAll"/>
         </items>
       </ToolBar>
-      <Button layoutX="377.0" layoutY="155.0" mnemonicParsing="false" text="Delete Driver" />
+      <Button layoutX="377.0" layoutY="155.0" mnemonicParsing="false" text="Delete Driver" onAction="#deleteDriver" />
    </children>
 </Pane>
