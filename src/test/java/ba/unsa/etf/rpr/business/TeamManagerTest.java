@@ -87,4 +87,13 @@ public class TeamManagerTest {
 
     }
 
+    @Test
+    void addNewTeam() throws F1Exception {
+        Team newCategory = new Team(22,"Pofalicki team F1","Jugoslavija");
+        teamManager.add(newCategory);
+
+        Assertions.assertTrue(true);
+        Mockito.verify(teamManager).add(newCategory);
+    }
+
 }
