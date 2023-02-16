@@ -27,4 +27,35 @@ public class TeamManagerTest {
                 , new Team(13, "Benetton","Tungzija")));
 
     }
+    public TeamManager getTeamManager() {
+        return teamManager;
+    }
+    public void setTeamManager(TeamManager teamManager) {
+        this.teamManager = teamManager;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    public TeamDaoSQLImpl getTeamDaoSQLMock() {
+        return teamDaoSQLMock;
+    }
+
+    public void setTeamDaoSQLMock(TeamDaoSQLImpl teamDaoSQLMock) {
+        this.teamDaoSQLMock = teamDaoSQLMock;
+    }
+
+    public List<Team> getTeamList() {
+        return teamList;
+    }
+
+    public void setTeamList(List<Team> teamList) {
+        this.teamList = teamList;
+    }
+
 }
