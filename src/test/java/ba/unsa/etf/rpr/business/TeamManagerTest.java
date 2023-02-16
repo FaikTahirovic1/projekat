@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 public class TeamManagerTest {
@@ -120,6 +122,28 @@ public class TeamManagerTest {
         Assertions.assertEquals( "vec postoji", exception.getMessage());
 
         Mockito.verify(teamManager).add(team);
+    }
+
+    /**
+     * This test searchTeams method
+     * @throws F1Exception
+     */
+    @Test
+    void searchTeamsTest() throws F1Exception {
+        when(teamManager.getAll()).thenReturn(teamList);
+        String string = "Faik's team";
+        Mockito.doCallRealMethod().when(teamManager).searchTeams(string);
+        List<Team>someTeams = teamManager.searchTeams(string);
+        assertAll(
+                "Negative computing",
+                () -> assertEquals(1 , someTeams.size()),
+                () -> assertEquals("Bosnia" , someTeams.get(0).getCountry()),
+                () -> assertEquals("Faik's team",someTeams.get(0).getName()),
+                () -> assertEquals(11,someTeams.get(0).getId())
+        );
+
+
+
     }
 
 
