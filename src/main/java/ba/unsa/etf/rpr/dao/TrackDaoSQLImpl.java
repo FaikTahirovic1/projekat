@@ -63,5 +63,35 @@ public class TrackDaoSQLImpl extends AbstractDao<Track> implements TrackDao{
             throw new F1Exception(e.getMessage(), e);
         }
     }
+    @Override
+    public Track add(Track item) throws F1Exception{
+        Map<String, Object> row = object2row(item);
+        //System.out.println("proslo");
+        Map.Entry<String, String> columns = prepareInsertParts(row);
+
+        StringBuilder builder = new StringBuilder();
+        builder.append("INSERT INTO ").append("Track");
+        builder.append(" (").append(columns.getKey()).append(") ");
+        builder.append("VALUES (").append(columns.getValue()).append(")");
+
+        try{
+
+            PreparedStatement stmt = getConnection().prepareStatement(builder.toString(), Statement.RETURN_GENERATED_KEYS);
+            // bind params. IMPORTANT treeMap is used to keep columns sorted so params are bind correctly
+            int counter = 1;
+            for (Map.Entry<String, Object> entry: row.entrySet()) {
+                stmt.setObject(counter, entry.getValue());
+                counter++;
+            }
+            stmt.executeUpdate();
+
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next(); // we know that there is one key
+
+            return item;
+        }catch (SQLException e){
+            throw new F1Exception("vec postoji");
+        }
+    }
 
 }

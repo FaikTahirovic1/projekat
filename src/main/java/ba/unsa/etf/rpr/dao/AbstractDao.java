@@ -137,7 +137,7 @@ public AbstractDao(String tableName) {
         }
         return columns.toString();
     }
-    private Map.Entry<String, String> prepareInsertParts(Map<String, Object> row){
+    Map.Entry<String, String> prepareInsertParts(Map<String, Object> row){
 
         StringBuilder columns = new StringBuilder();
         StringBuilder questions = new StringBuilder();
