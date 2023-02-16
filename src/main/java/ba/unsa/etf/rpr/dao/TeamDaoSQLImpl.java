@@ -20,7 +20,7 @@ public class TeamDaoSQLImpl extends AbstractDao<Team> implements  TeamDao{
         super("Team");
     }
     @Override
-    public Team row2object(ResultSet rs)throws RuntimeException{
+    public Team row2object(ResultSet rs) throws F1Exception {
         try{
 
 
@@ -33,7 +33,7 @@ public class TeamDaoSQLImpl extends AbstractDao<Team> implements  TeamDao{
             return team;
 
         }catch(Exception e){
-            throw new RuntimeException("Ne postoji kolona");
+            throw new F1Exception("izuzetak");
         }
     }
 

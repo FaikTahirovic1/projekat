@@ -171,7 +171,7 @@ public AbstractDao(String tableName) {
             // bind params. IMPORTANT treeMap is used to keep columns sorted so params are bind correctly
             int counter = 1;
             for (Map.Entry<String, Object> entry: row.entrySet()) {
-                //if (entry.getKey().equals("id")) continue; // skip ID
+                if (entry.getKey().equals("id")) continue; // skip ID
                 stmt.setObject(counter, entry.getValue());
                 counter++;
             }
@@ -180,13 +180,13 @@ public AbstractDao(String tableName) {
 
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next(); // we know that there is one key
-            //item.setId(rs.getInt(1)); //set id to return it back */
+            item.setId(rs.getInt(1)); //set id to return it back */
 
             return item;
         }catch (SQLException e){
-            //throw new F1Exception(e.getMessage(), e);
-            System.out.println("nes");
-            return null;
+            throw new F1Exception("vec postoji");
+            //System.out.println("nes");
+            //return null;
         }
     }
     public T update(T item) throws RuntimeException{

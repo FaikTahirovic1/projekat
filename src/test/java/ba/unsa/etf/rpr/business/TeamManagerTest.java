@@ -89,11 +89,38 @@ public class TeamManagerTest {
 
     @Test
     void addNewTeam() throws F1Exception {
-        Team newCategory = new Team(22,"Pofalicki team F1","Jugoslavija");
-        teamManager.add(newCategory);
+        Team newTeam = new Team(22,"Pofalicki team F1","Jugoslavija");
+        teamManager.add(newTeam);
 
         Assertions.assertTrue(true);
-        Mockito.verify(teamManager).add(newCategory);
+        Mockito.verify(teamManager).add(newTeam);
     }
+    @Test
+    void testFindingTeam()throws F1Exception{
+        Team firstTeam = new Team(1,"Pofalicki F1 team","Bosna i Hercegovina");
+        teamManager.add(firstTeam);
+        Team secondTeam = new Team(2,"Vrbanjusa","BiH");
+        teamManager.add(secondTeam);
+        System.out.println(teamManager.getAll().size());
+    }
+
+    /**
+     * Tests adding a team that already exists
+     * @throws F1Exception
+     */
+    @Test
+    void addAlreadyExisting() throws F1Exception {
+        when(teamManager.getAll()).thenReturn(teamList);
+
+        team = new Team(11,"Faik's team", "Bosnia");
+        Mockito.doCallRealMethod().when(teamManager).add(team);
+
+        F1Exception exception = Assertions.assertThrows(F1Exception.class, () -> {teamManager.add(team);});
+
+        Assertions.assertEquals( "vec postoji", exception.getMessage());
+
+        Mockito.verify(teamManager).add(team);
+    }
+
 
 }
