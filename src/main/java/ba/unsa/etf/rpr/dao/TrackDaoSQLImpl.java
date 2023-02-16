@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.Exception.F1Exception;
+import ba.unsa.etf.rpr.domain.Team;
 import ba.unsa.etf.rpr.domain.Time;
 import ba.unsa.etf.rpr.domain.Track;
 
@@ -8,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -92,6 +94,11 @@ public class TrackDaoSQLImpl extends AbstractDao<Track> implements TrackDao{
         }catch (SQLException e){
             throw new F1Exception("vec postoji");
         }
+    }
+    @Override
+    public List<Track> getAll() throws F1Exception {
+
+        return executeQuery("SELECT * FROM "+ "Track", null);
     }
 
 }
