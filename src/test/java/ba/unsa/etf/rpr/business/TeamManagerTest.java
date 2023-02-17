@@ -135,14 +135,12 @@ public class TeamManagerTest {
         Mockito.doCallRealMethod().when(teamManager).searchTeams(string);
         List<Team>someTeams = teamManager.searchTeams(string);
         assertAll(
-                "Negative computing",
+                "Searching team",
                 () -> assertEquals(1 , someTeams.size()),
                 () -> assertEquals("Bosnia" , someTeams.get(0).getCountry()),
                 () -> assertEquals("Faik's team",someTeams.get(0).getName()),
                 () -> assertEquals(11,someTeams.get(0).getId())
         );
-
-
 
     }
 
