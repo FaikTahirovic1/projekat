@@ -16,16 +16,20 @@ public class DriverDriverTest {
     private DriverDaoSQLImpl driverDaoSQLMock;
     private List<Driver> drivers;
     private TeamManagerTest teamManagerTest;
+    private TrackManagerTest trackManagerTest;
 
     @BeforeEach
     public void initializeObjects() throws F1Exception {
         teamManagerTest = new TeamManagerTest();
         teamManagerTest.initializeObjects();
+        trackManagerTest = new TrackManagerTest();
+        trackManagerTest.initializeObjects();
         driverManager = Mockito.mock(DriverManager.class);
         driverDaoSQLMock = Mockito.mock(DriverDaoSQLImpl.class);
 
-        Driver firstDriver = new Driver();
-        Driver secondDriver = new Driver();
+        Driver firstDriver = new Driver("Munjeviti juric",teamManagerTest.getTeamManager().searchTeams("Benetton").get(0),trackManagerTest.getTrackManager().getAll().get(0),90,22);
+
+        Driver secondDriver = new Driver("Chick Hicks",teamManagerTest.getTeamManager().searchTeams("Lotus").get(0),trackManagerTest.getTrackManager().getAll().get(1),91,35);
 
         drivers = new ArrayList<>();
         drivers.addAll(Arrays.asList(firstDriver, secondDriver));
