@@ -41,7 +41,7 @@ public class App {
     private static final Option getDrivers = new Option("getD", "get-drivers",false, "Printing all drivers from f1 database");
     private static final Option getTeams = new Option("getT", "get-teams",false, "Printing all teams from f1 database");
     private static final Option getTracks = new Option("getS", "get-tracks",false, "Printing all tracks from f1 database");
-    //private static final Option categoryDefinition = new Option(null, "category",false, "Defining category for next added quote");
+    //private static final Option categoryDefinition = new Option(null, "category",false, "Defining category for next added driver");
 
     public static void printFormattedOptions(Options options) {
         HelpFormatter helpFormatter = new HelpFormatter();
@@ -77,7 +77,62 @@ public class App {
     }
 
 
-    public static void main(String[] args) throws F1Exception {
+    public static void main(String[] args) throws F1Exception, ParseException {
+        Options options = addOptions();
+
+        CommandLineParser commandLineParser = new DefaultParser();
+
+        CommandLine cl = commandLineParser.parse(options, args);
+        if((cl.hasOption(addDriver.getOpt()) || cl.hasOption(addDriver.getLongOpt()))){
+            DriverManager driverManager = new DriverManager();
+            TeamManager teamManager = new TeamManager();
+            TrackManager trackManager = new TrackManager();
+            Team team = null;
+            Track track = null;
+            try {
+                team = searchThroughTeams(teamManager.getAll(), cl.getArgList().get(1));
+                track = searchThroughTracks(trackManager.getAll(),cl.getArgList().get(2));
+            }catch(Exception e) {
+                System.out.println("There is noteam/track in the list! Try again.");
+                System.exit(1);
+            }
+
+            Driver driver = new Driver();
+            driver.setTeam(team);
+            driver.setFavouriteTrack(track);
+            driver.setName(cl.getArgList().get(0));
+            driver.setAge(Integer.valueOf(cl.getArgList().get(3)));
+            driverManager.add(driver);
+            System.out.println("You successfully added driver to database!");
+//                break;
+        } else if(cl.hasOption(getDrivers.getOpt()) || cl.hasOption(getDrivers.getLongOpt())){
+            DriverManager driverManager = new DriverManager();
+            driverManager.getAll().forEach(d -> System.out.println(d.getName()));
+//                break;
+        } else if(cl.hasOption(addTeam.getOpt()) || cl.hasOption(addTeam.getLongOpt())){
+            try {
+                TeamManager teamManager = new TeamManager();
+                Team tim = new Team();
+                tim.setName(cl.getArgList().get(0));
+                teamManager.add(tim);
+                System.out.println("Team has been added successfully");
+//                    break;
+            }catch(Exception e) {
+                System.out.println("There is already team with same name in database! Try again");
+                System.exit(1);
+//                   break;
+            }
+
+        } else if(cl.hasOption(getTeams.getOpt()) || cl.hasOption(getTeams.getLongOpt())){
+            TeamManager teamManager = new TeamManager();
+            teamManager.getAll().forEach(t -> System.out.println(t.getName()));
+//                break;
+        } else {
+            printFormattedOptions(options);
+            System.exit(-1);
+//                break;
+        }
+//        }
 
     }
 }
