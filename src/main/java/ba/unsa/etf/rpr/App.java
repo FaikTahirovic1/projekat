@@ -50,6 +50,17 @@ public class App {
         helpFormatter.printOptions(printWriter, 150, options, 2, 7);
         printWriter.close();
     }
+    public static Options addOptions() {
+        Options options = new Options();
+        options.addOption(addDriver);
+        options.addOption(addTeam);
+        options.addOption(addTrack);
+        options.addOption(getDrivers);
+        options.addOption(getTeams);
+        options.addOption(getTracks);
+        //options.addOption(categoryDefinition);
+        return options;
+    }
 
     public static void main(String[] args) throws F1Exception {
 
