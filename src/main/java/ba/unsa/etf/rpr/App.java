@@ -61,11 +61,18 @@ public class App {
         //options.addOption(categoryDefinition);
         return options;
     }
-    public static Team searchThroughTeams(List<Team> listOfCategories, String teamName) {
+    public static Team searchThroughTeams(List<Team> listOfTeams, String teamName) {
 
         Team team = null;
-        team = listOfCategories.stream().filter(cat -> cat.getName().toLowerCase().equals(teamName.toLowerCase())).findAny().get();
+        team = listOfTeams.stream().filter(tim -> tim.getName().toLowerCase().equals(teamName.toLowerCase())).findAny().get();
         return team;
+
+    }
+    public static Track searchThroughTracks(List<Track> listOfTracks, String trackName) {
+
+        Track track = null;
+        track = listOfTracks.stream().filter(tr -> tr.getName().toLowerCase().equals(trackName.toLowerCase())).findAny().get();
+        return track;
 
     }
 
