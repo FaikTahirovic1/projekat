@@ -43,6 +43,14 @@ public class App {
     private static final Option getTracks = new Option("getS", "get-tracks",false, "Printing all tracks from f1 database");
     //private static final Option categoryDefinition = new Option(null, "category",false, "Defining category for next added quote");
 
+    public static void printFormattedOptions(Options options) {
+        HelpFormatter helpFormatter = new HelpFormatter();
+        PrintWriter printWriter = new PrintWriter(System.out);
+        helpFormatter.printUsage(printWriter, 150, "java -jar projekat.jar [option] 'something else if needed' ");
+        helpFormatter.printOptions(printWriter, 150, options, 2, 7);
+        printWriter.close();
+    }
+
     public static void main(String[] args) throws F1Exception {
 
     }
