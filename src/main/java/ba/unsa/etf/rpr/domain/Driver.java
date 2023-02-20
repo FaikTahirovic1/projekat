@@ -1,7 +1,9 @@
 package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
-
+/**
+ * Driver is a JavaBean which represents an entity that exists in the Data Base
+ */
 public class Driver implements Idable, Comparable<Driver> {
     private String name;
     private Team team;

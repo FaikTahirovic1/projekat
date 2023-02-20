@@ -1,6 +1,9 @@
 package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
+/**
+ * Team is a JavaBean which represents an entity that exists in the Data Base
+ */
 
 public class Team implements Idable {
 

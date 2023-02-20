@@ -1,6 +1,9 @@
 package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
+/**
+ * Time is a JavaBean class used in Track
+ */
 
 public class Time {
     private int minutes;
