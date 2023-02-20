@@ -128,6 +128,7 @@ public class App {
             teamManager.getAll().forEach(t -> System.out.println(t.getName()));
 //                break;
         } else {
+            System.out.println("nes");
             printFormattedOptions(options);
             System.exit(-1);
 //                break;
