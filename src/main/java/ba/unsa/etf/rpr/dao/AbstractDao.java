@@ -5,6 +5,10 @@ import ba.unsa.etf.rpr.domain.Idable;
 import java.io.IOException;
 import java.sql.*;
 import java.util.*;
+/**
+ * Abstract class that implements core DAO CRUD methods for every entity
+ *
+ */
 
 public abstract class AbstractDao <T extends Idable> implements Dao<T>{
 private static Connection connection=null;
