@@ -25,6 +25,11 @@ import java.awt.*;
 import java.util.ArrayList;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
+/**
+ * JavaFX controller for creating new driver management
+ *
+ * @author FaikTahirovic1
+ */
 
 public class CreateDriverController {
     private DriverManager drivermanager = new DriverManager();

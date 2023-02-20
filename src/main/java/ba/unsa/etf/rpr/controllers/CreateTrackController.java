@@ -17,7 +17,11 @@ import javafx.stage.StageStyle;
 
 import static java.lang.Integer.parseInt;
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
-
+/**
+ * JavaFX controller for creating new track management
+ *
+ * @author FaikTahirovic1
+ */
 public class CreateTrackController {
 
     private final TrackManager manager = new TrackManager();

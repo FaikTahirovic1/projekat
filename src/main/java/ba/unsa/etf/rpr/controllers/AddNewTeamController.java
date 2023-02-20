@@ -22,7 +22,11 @@ import javafx.stage.StageStyle;
 import java.util.ArrayList;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
-
+/**
+ * JavaFX controller for adding new team management
+ *
+ * @author FaikTahirovic1
+ */
 public class AddNewTeamController {
     TeamManager tm = new TeamManager();
     @FXML

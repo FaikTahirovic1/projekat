@@ -19,6 +19,11 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
+/**
+ * JavaFX controller for login management
+ *
+ * @author FaikTahirovic1
+ */
 
 public class LoginController {
     @FXML

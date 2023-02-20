@@ -15,7 +15,11 @@ import javafx.scene.control.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * JavaFX controller for track fans management
+ *
+ * @author FaikTahirovic1
+ */
 public class TrackFansController {
     private final DriverManager driver= new DriverManager();
     private final TrackManager track = new TrackManager();

@@ -15,7 +15,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+/**
+ * JavaFX controller for track management
+ *
+ * @author FaikTahirovic1
+ */
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 public class TrackScreenController {

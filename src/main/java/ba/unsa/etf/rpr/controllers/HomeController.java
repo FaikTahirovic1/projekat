@@ -13,6 +13,11 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
+/**
+ * JavaFX controller for home screen management
+ *
+ * @author FaikTahirovic1
+ */
 
 public class HomeController {
     public String username;

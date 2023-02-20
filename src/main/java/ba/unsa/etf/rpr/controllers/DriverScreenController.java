@@ -32,7 +32,11 @@ import java.util.Comparator;
 import java.util.ResourceBundle;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
-
+/**
+ * JavaFX controller for driver management
+ *
+ * @author FaikTahirovic1
+ */
 public class DriverScreenController {
     private final DriverManager manager = new DriverManager();
     @FXML
