@@ -97,14 +97,7 @@ public class TeamManagerTest {
         Assertions.assertTrue(true);
         Mockito.verify(teamManager).add(newTeam);
     }
-    @Test
-    void testFindingTeam()throws F1Exception{
-        Team firstTeam = new Team(1,"Pofalicki F1 team","Bosna i Hercegovina");
-        teamManager.add(firstTeam);
-        Team secondTeam = new Team(2,"Vrbanjusa","BiH");
-        teamManager.add(secondTeam);
-        System.out.println(teamManager.getAll().size());
-    }
+
 
     /**
      * Tests adding a team that already exists

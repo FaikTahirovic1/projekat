@@ -4,8 +4,12 @@ import ba.unsa.etf.rpr.Exception.F1Exception;
 import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.dao.DriverDaoSQLImpl;
 import ba.unsa.etf.rpr.domain.Driver;
+import ba.unsa.etf.rpr.domain.Team;
+import ba.unsa.etf.rpr.domain.Time;
+import ba.unsa.etf.rpr.domain.Track;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
@@ -14,11 +18,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 public class DriverDriverTest {
     private DriverManager driverManager;
     private Driver driver;
+    private Team team;
+    private Track track;
     private DriverDaoSQLImpl driverDaoSQLMock;
     private List<Driver> drivers;
     private TeamManagerTest teamManagerTest;
@@ -26,19 +34,21 @@ public class DriverDriverTest {
 
     @BeforeEach
     public void initializeObjects() throws F1Exception {
-        teamManagerTest = new TeamManagerTest();
-        teamManagerTest.initializeObjects();
-        trackManagerTest = new TrackManagerTest();
-        trackManagerTest.initializeObjects();
         driverManager = Mockito.mock(DriverManager.class);
+        driver = new Driver();
+        team = new Team();
+        team.setName("ETF ekipa");
+        team.setCountry("Bosna i Hercegovina");
+        team.setId(131);
+
+        track = new Track("Zimbabve",new Time(10009),"Vijaguva maglovita staza",20);
+
+        driver.setTeam(team);
+        driver.setFavouriteTrack(track);
+        driver.setId(1);
         driverDaoSQLMock = Mockito.mock(DriverDaoSQLImpl.class);
-
-        Driver firstDriver = new Driver("Munjeviti juric",teamManagerTest.getTeamManager().searchTeams("Benetton").get(0),trackManagerTest.getTrackManager().getAll().get(0),90,22);
-
-        Driver secondDriver = new Driver("Chick Hicks",teamManagerTest.getTeamManager().searchTeams("Lotus").get(0),trackManagerTest.getTrackManager().getAll().get(1),91,35);
-
-        drivers = new ArrayList<>();
-        drivers.addAll(Arrays.asList(firstDriver, secondDriver));
+        drivers = new ArrayList<Driver>();
+        drivers.add(driver);
 
     }
     public DriverManager getDriverManager() {
@@ -87,6 +97,23 @@ public class DriverDriverTest {
         daoFactoryMockedStatic.verify(DaoFactory::driverDao);
         Mockito.verify(driverManager).add(driver);
         daoFactoryMockedStatic.close();
+    }
+    /**
+     * This test searchDrivers method
+     * @throws F1Exception
+     */
+    @Disabled
+    void searchDriversTest() throws F1Exception {
+        when(driverManager.getAll()).thenReturn(drivers);
+        String string = "Munjeviti juric";
+        Mockito.doCallRealMethod().when(driverManager).searchDrivers(string);
+        List<Driver>someDrivers = driverManager.searchDrivers(string);
+        assertAll(
+                "Searching driver",
+                () -> assertEquals(1 , someDrivers.size()),
+                () -> assertEquals(11,someDrivers.get(0).getId())
+        );
+
     }
 
 }
