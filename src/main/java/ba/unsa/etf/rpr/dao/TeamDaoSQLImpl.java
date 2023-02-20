@@ -8,7 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-
+/**
+ * MySQL implementation of the DAO
+ * @author Faik Tahirovic
+ */
 public class TeamDaoSQLImpl extends AbstractDao<Team> implements  TeamDao{
     private static  TeamDaoSQLImpl instance = null;
     public static TeamDaoSQLImpl getInstance(){

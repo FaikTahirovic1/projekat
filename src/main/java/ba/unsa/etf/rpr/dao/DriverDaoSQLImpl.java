@@ -49,6 +49,10 @@ public class DriverDaoSQLImpl extends AbstractDao<Driver> implements DriverDao {
         return executeQueryUnique("SELECT * FROM "+"Drivers"+" WHERE id = ?", new Object[]{id});
 
     }
+    /**
+     * @param d - object to be mapped
+     * @return map representation of object
+     */
 
     public Map<String, Object> object2row(Driver d) {
         Map<String, Object> objekat = new TreeMap<String, Object>();
