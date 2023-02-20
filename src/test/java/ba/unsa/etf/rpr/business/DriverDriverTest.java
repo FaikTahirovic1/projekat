@@ -81,6 +81,12 @@ public class DriverDriverTest {
     public void setDriverList(List<Driver> driverList) {
         this.drivers = driverList;
     }
+
+    /**
+     * tests adding a new driver
+     * @throws F1Exception
+     * @autor FaikTahirovic1
+     */
     @Test
     void addNewDriverTest() throws F1Exception {
         Driver newDriver = new Driver("Opaki vozac",team,track,111,28);
