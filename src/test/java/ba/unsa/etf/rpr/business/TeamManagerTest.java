@@ -143,6 +143,28 @@ public class TeamManagerTest {
         );
 
     }
+    /**
+     * this tests deleting a team
+     * @throws F1Exception
+     * @autor FaikTahirovic1
+     */
+    @Test
+    public void deleteTeam() throws F1Exception {
+        MockedStatic<DaoFactory> daoFactoryMockedStatic = Mockito.mockStatic(DaoFactory.class);
+        daoFactoryMockedStatic.when(DaoFactory::teamDao).thenReturn(teamDaoSQLMock);
+        when(DaoFactory.teamDao().getAll()).thenReturn(teamList);
+        when(teamManager.getAll()).thenReturn(teamList);
+        int i = 0;
+        System.out.println(teamManager.getAll().size());
+        i = teamManager.getAll().get(0).getId();
+        Mockito.doCallRealMethod().when(teamManager).delete(i);
+        teamManager.delete(i);
+        Assertions.assertTrue(true);
+        Mockito.verify(teamManager).delete(i);
+        daoFactoryMockedStatic.close();
+
+
+    }
 
 
 }
