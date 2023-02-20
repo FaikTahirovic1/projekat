@@ -12,7 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-
+/**
+ * MySQL Implementation of DAO
+ * @author Faik Tahirovic
+ */
 public class DriverDaoSQLImpl extends AbstractDao<Driver> implements DriverDao {
     private static  DriverDaoSQLImpl instance = null;
     public static DriverDaoSQLImpl getInstance(){
@@ -57,6 +60,11 @@ public class DriverDaoSQLImpl extends AbstractDao<Driver> implements DriverDao {
         return objekat;
 
     }
+    /**
+     * @param text search string for Driver
+     * @return list of drivers
+     * @author Faik Tahirovic
+     */
     @Override
     public List<Driver> searchByText(String text) throws F1Exception {
         return executeQuery("SELECT * FROM Drivers WHERE Name LIKE concat('%', ?, '%')", new Object[]{text});

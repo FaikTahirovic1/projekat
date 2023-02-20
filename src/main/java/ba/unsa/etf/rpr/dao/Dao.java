@@ -4,7 +4,10 @@ package ba.unsa.etf.rpr.dao;
 import ba.unsa.etf.rpr.Exception.F1Exception;
 
 import java.util.List;
-
+/**
+ * Root interface for all DAO classes
+ *
+ */
 
     public interface Dao<T> {
 
