@@ -72,6 +72,7 @@ public class TrackManagerTest {
     /**
      * this tests adding a track
      * @throws F1Exception
+     * @autor FaikTahirovic1
      */
     @Test
     public void addTrack() throws F1Exception {
@@ -88,6 +89,28 @@ public class TrackManagerTest {
         Assertions.assertTrue(true);
         Mockito.verify(trackManager).add(track);
         daoFactoryMockedStatic.close();
+
+    }
+    /**
+     * this tests deleting a track
+     * @throws F1Exception
+     * @autor FaikTahirovic1
+     */
+    @Test
+    public void deleteTrack() throws F1Exception {
+        MockedStatic<DaoFactory> daoFactoryMockedStatic = Mockito.mockStatic(DaoFactory.class);
+        daoFactoryMockedStatic.when(DaoFactory::trackDao).thenReturn(trackDaoSQLMock);
+        when(DaoFactory.trackDao().getAll()).thenReturn(trackList);
+        when(trackManager.getAll()).thenReturn(trackList);
+        int i = 0;
+        System.out.println(trackManager.getAll().size());
+        i = trackManager.getAll().get(0).getId();
+        Mockito.doCallRealMethod().when(trackManager).delete(i);
+        trackManager.delete(i);
+        Assertions.assertTrue(true);
+        Mockito.verify(trackManager).delete(i);
+        daoFactoryMockedStatic.close();
+
 
     }
 
