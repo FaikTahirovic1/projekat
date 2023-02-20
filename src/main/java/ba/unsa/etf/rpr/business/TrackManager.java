@@ -6,7 +6,11 @@ import ba.unsa.etf.rpr.domain.Team;
 import ba.unsa.etf.rpr.domain.Track;
 
 import java.util.List;
-
+/**
+ * Business Logic Layer for management of Tracks
+ *
+ * @author FaikTahirovic1
+ */
 public class TrackManager {
     public List<Track> getAll() throws F1Exception {
         return DaoFactory.trackDao().getAll();

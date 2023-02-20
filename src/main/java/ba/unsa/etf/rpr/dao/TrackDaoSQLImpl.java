@@ -12,7 +12,10 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-
+/**
+ * MySQL implementation of the DAO
+ * @author FaikTahirovic1
+ */
 public class TrackDaoSQLImpl extends AbstractDao<Track> implements TrackDao{
     private static  TrackDaoSQLImpl instance = null;
     public static TrackDaoSQLImpl getInstance(){

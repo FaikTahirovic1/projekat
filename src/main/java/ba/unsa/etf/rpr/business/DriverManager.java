@@ -6,7 +6,11 @@ import ba.unsa.etf.rpr.domain.Driver;
 
 
 import java.util.List;
-
+/**
+ * Business Logic Layer for management of Drivers
+ *
+ * @author FaikTahirovic1
+ */
 public class DriverManager {
     public static List<Driver> getAll() throws F1Exception {
         return DaoFactory.driverDao().getAll();

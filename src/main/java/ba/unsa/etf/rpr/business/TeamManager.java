@@ -6,7 +6,11 @@ import ba.unsa.etf.rpr.domain.Driver;
 import ba.unsa.etf.rpr.domain.Team;
 
 import java.util.List;
-
+/**
+ * Business Logic Layer for management of Teams
+ *
+ * @author FaikTahirovic1
+ */
 public class TeamManager {
     public List<Team> getAll() throws F1Exception {
         return DaoFactory.teamDao().getAll();
