@@ -188,9 +188,9 @@ public AbstractDao(String tableName) {
 
             return item;
         }catch (SQLException e){
-            throw new F1Exception("vec postoji");
+            //throw new F1Exception("vec postoji");
             //System.out.println("nes");
-            //return null;
+            return null;
         }
     }
     public T update(T item) throws RuntimeException{

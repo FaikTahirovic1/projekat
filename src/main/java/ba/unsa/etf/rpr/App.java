@@ -129,7 +129,6 @@ public class App {
             }
 
         } else if(cl.hasOption(getTeams.getOpt()) || cl.hasOption(getTeams.getLongOpt())){
-            TeamManager teamManager = new TeamManager();
             teamManager.getAll().forEach(t -> System.out.println(t.getName()));
         } else if(cl.hasOption(addTrack.getOpt()) || cl.hasOption(addTrack.getLongOpt())){
             try {
@@ -147,7 +146,6 @@ public class App {
             }
 
         }else if(cl.hasOption(getTracks.getOpt()) || cl.hasOption(getTracks.getLongOpt())){
-            TrackManager trackManager = new TrackManager();
             trackManager.getAll().forEach(s -> System.out.println(s.getName()));
 
         }else {
