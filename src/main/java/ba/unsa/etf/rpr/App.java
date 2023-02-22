@@ -146,6 +146,10 @@ public class App {
                 System.exit(1);
             }
 
+        }else if(cl.hasOption(getTracks.getOpt()) || cl.hasOption(getTracks.getLongOpt())){
+            TrackManager trackManager = new TrackManager();
+            teamManager.getAll().forEach(t -> System.out.println(t.getName()));
+
         }else {
             printFormattedOptions(options);
             System.exit(-1);
