@@ -92,16 +92,13 @@ public class App {
 
         CommandLine cl = commandLineParser.parse(options, args);
         if((cl.hasOption(addDriver.getOpt()) || cl.hasOption(addDriver.getLongOpt()))){
-            DriverManager driverManager = new DriverManager();
-            TeamManager teamManager = new TeamManager();
-            TrackManager trackManager = new TrackManager();
             Team team = null;
             Track track = null;
             try {
                 team = searchThroughTeams(teamManager.getAll(), cl.getArgList().get(1));
                 track = searchThroughTracks(trackManager.getAll(),cl.getArgList().get(2));
             }catch(Exception e) {
-                System.out.println("There is noteam/track in the list! Try again.");
+                System.out.println("There is no team/track in the list! Try again.");
                 System.exit(1);
             }
 
@@ -121,7 +118,9 @@ public class App {
             try {
                 TeamManager teamManager = new TeamManager();
                 Team tim = new Team();
-                tim.setName(cl.getArgList().get(0));
+                tim.setName(cl.getArgList().get(1));
+                tim.setId(Integer.valueOf(cl.getArgList().get(0)));
+                tim.setCountry(cl.getArgList().get(2));
                 teamManager.add(tim);
                 System.out.println("Team has been added successfully");
 //                    break;
