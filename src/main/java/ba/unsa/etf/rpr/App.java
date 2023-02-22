@@ -194,6 +194,25 @@ public class App {
             }
 
 
+        }else if(cl.hasOption(deleteTeam.getOpt()) || cl.hasOption(deleteTeam.getLongOpt())){
+            Team team = null;
+            try{
+                team = searchThroughTeams(teamManager.getAll(), cl.getArgList().get(0));
+            }
+            catch(Exception e){
+                System.out.println("Such team is not in the database!");
+                System.exit(1);
+            }
+            try{
+                trackManager.delete(team.getId());
+                System.out.println("This team is now removed from the database!");
+            }
+            catch(Exception e){
+                System.out.println(e.getMessage());
+                System.out.println("Try again!");
+                System.exit(1);
+            }
+
         }else {
             printFormattedOptions(options);
             System.exit(-1);
