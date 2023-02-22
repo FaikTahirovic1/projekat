@@ -123,19 +123,30 @@ public class App {
                 tim.setCountry(cl.getArgList().get(2));
                 teamManager.add(tim);
                 System.out.println("Team has been added successfully");
-//                    break;
             }catch(Exception e) {
                 System.out.println("There is already team with same name in database! Try again");
                 System.exit(1);
-//                   break;
             }
 
         } else if(cl.hasOption(getTeams.getOpt()) || cl.hasOption(getTeams.getLongOpt())){
             TeamManager teamManager = new TeamManager();
             teamManager.getAll().forEach(t -> System.out.println(t.getName()));
-//                break;
-        } else {
-            System.out.println("nes");
+        } else if(cl.hasOption(addTrack.getOpt()) || cl.hasOption(addTrack.getLongOpt())){
+            try {
+                TrackManager trackManager = new TrackManager();
+                Track track = new Track();
+                track.setId(Integer.valueOf(cl.getArgList().get(0)));
+                track.setName(cl.getArgList().get(1));
+                Integer timeInMilis = Integer.valueOf(cl.getArgList().get(2));
+                Time bestTime = new Time(timeInMilis);
+                track.setBestTime(bestTime);
+                track.setCountry(cl.getArgList().get(3));
+            }catch (Exception e){
+                System.out.println("Unable to add this track");
+                System.exit(1);
+            }
+
+        }else {
             printFormattedOptions(options);
             System.exit(-1);
 //                break;
