@@ -173,6 +173,27 @@ public class App {
                 System.exit(1);
             }
 
+        }else if(cl.hasOption(deleteTrack.getOpt()) || cl.hasOption(deleteTrack.getLongOpt())){
+
+            Track track = null;
+            try{
+                track = searchThroughTracks(trackManager.getAll(), cl.getArgList().get(0));
+            }
+            catch(Exception e){
+                System.out.println("Such track is not in the database!");
+                System.exit(1);
+            }
+            try{
+                trackManager.delete(track.getId());
+                System.out.println("This track is now removed from the database!");
+            }
+            catch(Exception e){
+                System.out.println(e.getMessage());
+                System.out.println("Try again!");
+                System.exit(1);
+            }
+
+
         }else {
             printFormattedOptions(options);
             System.exit(-1);
