@@ -83,6 +83,11 @@ public class App {
         return track;
 
     }
+    public static Driver searchThroughDrivers(List<Driver>listOfDrivers, String driverName){
+        Driver driver = null;
+        driver = listOfDrivers.stream().filter(d -> d.getName().toLowerCase().equals(driverName.toLowerCase())).findAny().get();
+        return driver;
+    }
 
 
     public static void main(String[] args) throws F1Exception, ParseException {
@@ -147,6 +152,26 @@ public class App {
 
         }else if(cl.hasOption(getTracks.getOpt()) || cl.hasOption(getTracks.getLongOpt())){
             trackManager.getAll().forEach(s -> System.out.println(s.getName()));
+
+        }
+        else if(cl.hasOption(deleteDriver.getOpt()) || cl.hasOption(deleteDriver.getLongOpt())){
+            Driver driver = null;
+            try{
+                driver = searchThroughDrivers(driverManager.getAll(), cl.getArgList().get(0));
+            }
+            catch(Exception e){
+                System.out.println("Such driver is not in the database!");
+                System.exit(1);
+            }
+            try{
+                driverManager.delete(driver.getId());
+                System.out.println("This driver is now removed from the database!");
+            }
+            catch(Exception e){
+                System.out.println(e.getMessage());
+                System.out.println("Try again!");
+                System.exit(1);
+            }
 
         }else {
             printFormattedOptions(options);
