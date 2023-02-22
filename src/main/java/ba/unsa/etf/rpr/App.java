@@ -148,7 +148,7 @@ public class App {
 
         }else if(cl.hasOption(getTracks.getOpt()) || cl.hasOption(getTracks.getLongOpt())){
             TrackManager trackManager = new TrackManager();
-            teamManager.getAll().forEach(t -> System.out.println(t.getName()));
+            trackManager.getAll().forEach(s -> System.out.println(s.getName()));
 
         }else {
             printFormattedOptions(options);
