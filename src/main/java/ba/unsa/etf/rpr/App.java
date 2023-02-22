@@ -39,7 +39,7 @@ public class App {
     private static final TeamManager teamManager = new TeamManager();
     private static final TrackManager trackManager = new TrackManager();
     private static final Option addDriver = new Option("AddD","add-driver",false, "Adding new driver to f1 database");
-    private static final Option addTeam = new Option("Addt","add-team",false, "Adding new team to f1 database");
+    private static final Option addTeam = new Option("AddT","add-team",false, "Adding new team to f1 database");
     private static final Option addTrack = new Option("AddS","add-track",false, "Adding new track to f1 database");
     private static final Option getDrivers = new Option("getD", "get-drivers",false, "Printing all drivers from f1 database");
     private static final Option getTeams = new Option("getT", "get-teams",false, "Printing all teams from f1 database");
@@ -204,7 +204,7 @@ public class App {
                 System.exit(1);
             }
             try{
-                trackManager.delete(team.getId());
+                teamManager.delete(team.getId());
                 System.out.println("This team is now removed from the database!");
             }
             catch(Exception e){
