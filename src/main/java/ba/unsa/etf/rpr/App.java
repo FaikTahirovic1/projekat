@@ -44,7 +44,10 @@ public class App {
     private static final Option getDrivers = new Option("getD", "get-drivers",false, "Printing all drivers from f1 database");
     private static final Option getTeams = new Option("getT", "get-teams",false, "Printing all teams from f1 database");
     private static final Option getTracks = new Option("getS", "get-tracks",false, "Printing all tracks from f1 database");
-    //private static final Option categoryDefinition = new Option(null, "category",false, "Defining category for next added driver");
+
+    private static final Option deleteDriver = new Option("deleteD","delete-driver",false,"Deletes a driver from f1 database");
+    private static final Option deleteTeam = new Option("deleteT","delete-team",false,"Deletes a team from f1 database");
+    private static final Option deleteTrack = new Option("deleteS","delete-track",false,"Deletes a track from f1 database");
 
     public static void printFormattedOptions(Options options) {
         HelpFormatter helpFormatter = new HelpFormatter();
@@ -61,7 +64,9 @@ public class App {
         options.addOption(getDrivers);
         options.addOption(getTeams);
         options.addOption(getTracks);
-        //options.addOption(categoryDefinition);
+        options.addOption(deleteDriver);
+        options.addOption(deleteTeam);
+        options.addOption(deleteTrack);
         return options;
     }
     public static Team searchThroughTeams(List<Team> listOfTeams, String teamName) {
