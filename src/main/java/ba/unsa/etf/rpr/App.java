@@ -35,6 +35,9 @@ public class App {
     /**
      * Defining final variables to describe all code having options
      */
+    private static final DriverManager driverManager = new DriverManager();
+    private static final TeamManager teamManager = new TeamManager();
+    private static final TrackManager trackManager = new TrackManager();
     private static final Option addDriver = new Option("d","add-driver",false, "Adding new driver to f1 database");
     private static final Option addTeam = new Option("t","add-team",false, "Adding new team to f1 database");
     private static final Option addTrack = new Option("s","add-track",false, "Adding new track to f1 database");
