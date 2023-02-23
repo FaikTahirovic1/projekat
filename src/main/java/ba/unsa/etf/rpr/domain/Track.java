@@ -68,7 +68,7 @@ public class Track implements Idable {
 
     @Override
     public String toString() {
-        return getName() + " " + getBestTime().toString();
+        return getName() ;
     }
 
 }

@@ -70,12 +70,13 @@ public class DriverScreenController {
         }
     }
     public void showAllDrivers(ActionEvent event) throws F1Exception {
-        for(int i = 0; i< DriverManager.getAll().size();i++){
+        /*for(int i = 0; i< DriverManager.getAll().size();i++){
             System.out.println(DriverManager.getAll().get(i).getName());
             ObservableList<Driver> lista = FXCollections.observableList(DriverManager.getAll());
             driversTable.setItems(lista);
 
-        }
+        }*/
+        refreshDrivers();
 
     }
     private void refreshDrivers(){
