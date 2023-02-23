@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.Exception.F1Exception;
 import ba.unsa.etf.rpr.domain.Team;
+import ba.unsa.etf.rpr.domain.Track;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -70,6 +71,36 @@ public class TeamDaoSQLImpl extends AbstractDao<Team> implements  TeamDao{
         //System.out.println("ovo");
         return executeQueryUnique("SELECT * FROM "+"Team"+" WHERE idTeam = ?", new Object[]{id});
 
+    }
+    @Override
+    public Team add(Team item) throws F1Exception{
+        Map<String, Object> row = object2row(item);
+        //System.out.println("proslo");
+        Map.Entry<String, String> columns = prepareInsertParts(row);
+
+        StringBuilder builder = new StringBuilder();
+        builder.append("INSERT INTO ").append("Team");
+        builder.append(" (").append(columns.getKey()).append(") ");
+        builder.append("VALUES (").append(columns.getValue()).append(")");
+
+        try{
+
+            PreparedStatement stmt = getConnection().prepareStatement(builder.toString(), Statement.RETURN_GENERATED_KEYS);
+            // bind params. IMPORTANT treeMap is used to keep columns sorted so params are bind correctly
+            int counter = 1;
+            for (Map.Entry<String, Object> entry: row.entrySet()) {
+                stmt.setObject(counter, entry.getValue());
+                counter++;
+            }
+            stmt.executeUpdate();
+
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next(); // we know that there is one key
+
+            return item;
+        }catch (SQLException e){
+            throw new F1Exception("vec postoji");
+        }
     }
     @Override
     public List<Team> getAll() throws F1Exception {

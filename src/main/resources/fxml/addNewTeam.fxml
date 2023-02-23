@@ -23,7 +23,7 @@
                      </VBox.margin>
                   </Button>
                   <Button mnemonicParsing="false" onAction="#editThisTeam" text="Edit this Team" />
-                  <Button mnemonicParsing="false" text="Delete this Team" onAction="#deleteThisTeam">
+                  <Button mnemonicParsing="false" onAction="#deleteThisTeam" text="Delete this Team">
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>
@@ -38,6 +38,7 @@
               </items>
             </ToolBar>
             <DialogPane contentText="Here you can add or edit existing team" layoutX="160.0" layoutY="91.0" prefHeight="54.0" prefWidth="235.0" />
+            <DialogPane fx:id="info" layoutX="85.0" layoutY="333.0" />
          </children>
       </Pane>
    </center>

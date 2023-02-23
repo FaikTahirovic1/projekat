@@ -12,10 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -37,6 +34,8 @@ public class AddNewTeamController {
     private TextField teamcountry;
     @FXML
     private ChoiceBox<String> cb;
+    @FXML
+    private DialogPane info;
     @FXML
     public void initialize() throws F1Exception {
         ArrayList<Team> timovi = (ArrayList<Team>) tm.getAll();
@@ -96,6 +95,8 @@ public class AddNewTeamController {
             Team tim = new Team(i, n, c);
             //tm.add(tim);
             tm.update(tim);
+            info.setContentText("This team has been updated!");
+
         }catch(F1Exception e){
             new Alert(Alert.AlertType.NONE, "Cannot edit this team as drivers drive for it", ButtonType.OK).show();
         }
@@ -104,6 +105,7 @@ public class AddNewTeamController {
     public void deleteThisTeam(ActionEvent actionEvent)throws  F1Exception{
         try{
             tm.delete(Integer.parseInt(teamid.getText()));
+            info.setContentText("Team has been deleted");
         }catch (F1Exception e){
             new Alert(Alert.AlertType.NONE, "Cannot delete this team as drivers drive for it", ButtonType.OK).show();
         }
@@ -114,6 +116,7 @@ public class AddNewTeamController {
         String c = teamcountry.getText();
         Team tim = new Team(i,n,c);
         tm.add(tim);
+        info.setContentText("Team has been added");
     }
     private void refreshTeams() throws F1Exception{
         try {
