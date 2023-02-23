@@ -71,7 +71,6 @@ public class CreateDriverController {
             for(int i = 0; i < timovi.size(); i++) {
                 teamNames.add(timovi.get(i).getName());
             }
-            //teamcb.setItems(FXCollections.observableArrayList(teamNames));
         } catch (F1Exception e) {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }

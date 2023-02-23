@@ -72,7 +72,6 @@ public class DriverScreenController {
     public void showAllDrivers(ActionEvent event) throws F1Exception {
         for(int i = 0; i< DriverManager.getAll().size();i++){
             System.out.println(DriverManager.getAll().get(i).getName());
-            //driversTable.setItems();
             ObservableList<Driver> lista = FXCollections.observableList(DriverManager.getAll());
             driversTable.setItems(lista);
 
