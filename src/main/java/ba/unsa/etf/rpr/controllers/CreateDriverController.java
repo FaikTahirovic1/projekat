@@ -45,8 +45,6 @@ public class CreateDriverController {
     @FXML
     public TextField namefield;
     @FXML
-    public TextField idfield;
-    @FXML
     public TextField agefield;
 
     @FXML
@@ -93,7 +91,6 @@ public class CreateDriverController {
     public void create(ActionEvent actionEvent) throws F1Exception {
         Driver d = new Driver();
         d.setName(namefield.getText());
-        d.setId(Integer.parseInt(idfield.getText()));
         d.setTeam(findTeamByName(teamcb.getValue()));
         d.setFavouriteTrack(findTrackByName(trackcb.getValue()));
         d.setAge(Integer.parseInt(agefield.getText()));

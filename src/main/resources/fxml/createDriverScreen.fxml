@@ -19,15 +19,14 @@
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
             <TextField fx:id="namefield" layoutX="20.0" promptText="Driver name" />
-            <ChoiceBox fx:id="teamcb" layoutX="20.0" layoutY="200.0" prefWidth="150.0" />
-            <TextField fx:id="idfield" layoutX="20.0" layoutY="50.0" promptText="id" />
-            <ChoiceBox fx:id="trackcb" layoutX="20.0" layoutY="150.0" prefWidth="150.0" />
-            <TextField fx:id="agefield" layoutX="20.0" layoutY="100.0" promptText="age" />
+            <ChoiceBox fx:id="teamcb" layoutX="20.0" layoutY="180.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="trackcb" layoutX="20.0" layoutY="120.0" prefWidth="150.0" />
+            <TextField fx:id="agefield" layoutX="21.0" layoutY="60.0" promptText="age" />
          </children>
       </Pane>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" text="Back" onAction="#back">
+            <Button mnemonicParsing="false" onAction="#back" text="Back">
                <HBox.margin>
                   <Insets left="10.0" top="10.0" />
                </HBox.margin>
