@@ -129,9 +129,7 @@ public class DriverScreenController {
         manager.delete(d.getId());
 
     }
-    public void editDriver(ActionEvent actionEvent){
 
-    }
     public void createDriver(ActionEvent actionEvent){
         openDialog("Create driver","/fxml/createDriverScreen.fxml",new CreateDriverController());
 
