@@ -76,7 +76,7 @@ public class DriverDaoSQLImpl extends AbstractDao<Driver> implements DriverDao {
         return executeQuery("SELECT * FROM Drivers WHERE Name LIKE concat('%', ?, '%')", new Object[]{text});
     }
     @Override
-    public Driver add(Driver item) throws F1Exception{
+    public Driver add(Driver item) throws F1Exception {
         Map<String, Object> row = object2row(item);
         Map.Entry<String, String> columns = prepareInsertParts(row);
 
@@ -85,12 +85,12 @@ public class DriverDaoSQLImpl extends AbstractDao<Driver> implements DriverDao {
         builder.append(" (").append(columns.getKey()).append(") ");
         builder.append("VALUES (").append(columns.getValue()).append(")");
 
-        try{
-
+        try {
             PreparedStatement stmt = getConnection().prepareStatement(builder.toString(), Statement.RETURN_GENERATED_KEYS);
             // bind params. IMPORTANT treeMap is used to keep columns sorted so params are bind correctly
             int counter = 1;
-            for (Map.Entry<String, Object> entry: row.entrySet()) {
+            for (Map.Entry<String, Object> entry : row.entrySet()) {
+                if (entry.getKey().equals("id")) continue; // skip ID
                 stmt.setObject(counter, entry.getValue());
                 counter++;
             }
@@ -98,11 +98,11 @@ public class DriverDaoSQLImpl extends AbstractDao<Driver> implements DriverDao {
 
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next(); // we know that there is one key
+            item.setId(rs.getInt(1)); //set id to return it back */
 
             return item;
-        }catch (SQLException e){
-           // throw new F1Exception("vec postoji");
-            return null;
+        } catch (SQLException e) {
+            throw new F1Exception(e.getMessage(), e);
         }
     }
 }
