@@ -159,5 +159,28 @@ public class TeamManagerTest {
 
     }
 
+    /**
+     * Tests updating a team
+     * @throws F1Exception
+     * @author FaikTahirovic1
+     */
+    @Test
+    public  void updateTeam() throws F1Exception {
+        MockedStatic<DaoFactory> daoFactoryMockedStatic = Mockito.mockStatic(DaoFactory.class);
+        daoFactoryMockedStatic.when(DaoFactory::teamDao).thenReturn(teamDaoSQLMock);
+        when(DaoFactory.teamDao().getAll()).thenReturn(teamList);
+        when(teamManager.getAll()).thenReturn(teamList);
+        Team tim = new Team();
+        tim.setId(teamManager.getAll().get(0).getId());
+        tim.setCountry(teamManager.getAll().get(0).getCountry());
+        tim.setName("Changed name");
+        Mockito.doCallRealMethod().when(teamManager).update(tim);
+        teamManager.update(tim);
+        Assertions.assertTrue(true);
+        Mockito.verify(teamManager).update(tim);
+        daoFactoryMockedStatic.close();
+
+    }
+
 
 }

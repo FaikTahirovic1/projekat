@@ -101,6 +101,8 @@ public class DriverDriverTest {
      */
     @Disabled
     void searchDriversTest() throws F1Exception {
+        MockedStatic<DaoFactory> daoFactoryMockedStatic = Mockito.mockStatic(DaoFactory.class);
+        daoFactoryMockedStatic.when(DaoFactory::driverDao).thenReturn(driverDaoSQLMock);
         when(driverManager.getAll()).thenReturn(drivers);
         String string = "Munjeviti juric";
         Mockito.doCallRealMethod().when(driverManager).searchDrivers(string);
