@@ -87,6 +87,33 @@ public class TeamDaoSQLImpl extends AbstractDao<Team> implements  TeamDao{
             throw new F1Exception(e.getMessage(), e);
         }
     }
+    @Override
+    public Team update(Team item) throws RuntimeException {
 
+        Map<String, Object> row = object2row(item);
+        String updateColumns = prepareUpdateParts(row);
+        StringBuilder builder = new StringBuilder();
+        builder.append("UPDATE ")
+                .append("Team")
+                .append(" SET ")
+                .append(updateColumns)
+                .append(" WHERE idTeam = ?");
+
+        try {
+            PreparedStatement stmt = getConnection().prepareStatement(builder.toString());
+            int counter = 1;
+            for (Map.Entry<String, Object> entry : row.entrySet()) {
+                //if (entry.getKey().equals("id")) continue; // skip ID
+                stmt.setObject(counter, entry.getValue());
+                counter++;
+            }
+            stmt.setObject(counter, item.getId());
+            stmt.executeUpdate();
+            //System.out.println();
+            return item;
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage(), e);
+        }
+    }
 
 }

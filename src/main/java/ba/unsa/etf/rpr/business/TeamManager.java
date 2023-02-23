@@ -31,16 +31,7 @@ public class TeamManager {
             throw e;
         }
     }
-    public Team update(Team team) throws F1Exception {
-        //updates team with same id, parameter is the new version of team
-        Team t = new Team();
-        //find same id
-        for(int i = 0; i < getAll().size(); i++){
-            if(getAll().get(i).getId() == team.getId())t = getAll().get(i);
-        }
-        //t drzi taj tim;
-        delete(t.getId());
-        add(team);
-        return team;
+    public void update(Team t) throws F1Exception{
+        DaoFactory.teamDao().update(t);
     }
 }

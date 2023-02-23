@@ -67,8 +67,7 @@ public class TrackScreenController {
         try {
             Track track = trackList.getSelectionModel().getSelectedItem();
             manager.delete(track.getId());
-            //refreshCategories();
-            trackList.getItems().remove(track); // perf optimization
+            trackList.getItems().remove(track);
         }catch (F1Exception e){
             new Alert(Alert.AlertType.NONE, "Cannot delete this track as drivers consider it its favourite", ButtonType.OK).show();
         }

@@ -23,7 +23,7 @@
                      </VBox.margin>
                   </Button>
                   <Button mnemonicParsing="false" onAction="#editThisTeam" text="Edit this Team" />
-                  <Button mnemonicParsing="false" text="Delete this Team">
+                  <Button mnemonicParsing="false" text="Delete this Team" onAction="#deleteThisTeam">
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>

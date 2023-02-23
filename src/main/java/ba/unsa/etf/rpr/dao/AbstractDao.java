@@ -128,7 +128,7 @@ public AbstractDao(String tableName) {
             throw new F1Exception("Object not found");
         }
     }
-    private String prepareUpdateParts(Map<String, Object> row){
+    String prepareUpdateParts(Map<String, Object> row){
         StringBuilder columns = new StringBuilder();
         int counter = 0;
         for (Map.Entry<String, Object> entry: row.entrySet()) {

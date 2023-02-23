@@ -89,16 +89,24 @@ public class AddNewTeamController {
     }
     public void editThisTeam(ActionEvent actionEvent){
         try {
-            tm.delete(Integer.parseInt(teamid.getText()));
+            //tm.delete(Integer.parseInt(teamid.getText()));
             Integer i = Integer.parseInt(teamid.getText());
             String n = teamname.getText();
             String c = teamcountry.getText();
             Team tim = new Team(i, n, c);
-            tm.add(tim);
+            //tm.add(tim);
+            tm.update(tim);
         }catch(F1Exception e){
             new Alert(Alert.AlertType.NONE, "Cannot edit this team as drivers drive for it", ButtonType.OK).show();
         }
 
+    }
+    public void deleteThisTeam(ActionEvent actionEvent)throws  F1Exception{
+        try{
+            tm.delete(Integer.parseInt(teamid.getText()));
+        }catch (F1Exception e){
+            new Alert(Alert.AlertType.NONE, "Cannot delete this team as drivers drive for it", ButtonType.OK).show();
+        }
     }
     public void addThisTeam(ActionEvent actionEvent) throws F1Exception {
         Integer i = Integer.parseInt(teamid.getText());
