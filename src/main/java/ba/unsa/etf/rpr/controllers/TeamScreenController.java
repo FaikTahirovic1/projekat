@@ -40,10 +40,6 @@ public class TeamScreenController {
     public TableColumn<Team, String> teamCountry;
     @FXML
     public DialogPane dialogP;
-    /*@FXML
-    public TableColumn<SpecialKindOfTeam, Driver> driver1;
-    @FXML
-    public TableColumn<SpecialKindOfTeam, Driver> driver2;*/
     public void goHome(ActionEvent actionEvent){
         openDialog("Home","/fxml/HomePage.fxml",new HomeController(""));
 
@@ -86,8 +82,6 @@ public class TeamScreenController {
     public void initialize() throws F1Exception {
         teamName.setCellValueFactory(new PropertyValueFactory<Team, String>("name"));
         teamCountry.setCellValueFactory(new PropertyValueFactory<Team, String>("country"));
-        //driver1.setCellValueFactory(new PropertyValueFactory<SpecialKindOfTeam, Driver>("d1"));
-        //driver2.setCellValueFactory(new PropertyValueFactory<SpecialKindOfTeam, Driver>("d2"));
         refreshTeams();
         String s = "Number of Teams: " + tim.getAll().size();
         dialogP.setContentText(s);
